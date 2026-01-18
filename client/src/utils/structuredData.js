@@ -3,9 +3,35 @@
  * Generates structured data for better SEO and rich results in search engines
  */
 
+import DOMPurify from 'dompurify';
+
 const SITE_URL = 'https://nalburdeposu.com.tr';
 const SITE_NAME = 'Nalbur Deposu';
 const LOGO_URL = `${SITE_URL}/images/logo.png`;
+
+/**
+ * Sanitize product descriptions for safe use in JSON-LD.
+ * Strips all HTML tags and removes any remaining angle brackets.
+ *
+ * @param {string | undefined | null} description
+ * @returns {string | undefined}
+ */
+const sanitizeDescription = (description) => {
+    if (!description || typeof description !== 'string') {
+        return undefined;
+    }
+
+    // Remove all HTML tags and attributes
+    const withoutHtml = DOMPurify.sanitize(description, {
+        ALLOWED_TAGS: [],
+        ALLOWED_ATTR: []
+    });
+
+    // As a defensive-in-depth step, strip any remaining angle brackets
+    const withoutAngles = withoutHtml.replace(/[<>]/g, '');
+
+    return withoutAngles;
+};
 
 /**
  * Generate Organization schema
@@ -52,6 +78,8 @@ export const generateWebsiteSchema = () => ({
  * Generate Product schema
  * @param {Object} product - Product object
  * @returns {Object} JSON-LD product schema
+    const sanitizedDescription = sanitizeDescription(product.aciklama);
+
  */
 export const generateProductSchema = (product) => {
     const price = Number(product.indirimliFiyat || product.fiyat);
@@ -61,9 +89,7 @@ export const generateProductSchema = (product) => {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: product.ad,
-        description: product.aciklama
-            ?.replace(/<[^>]*>/g, '')
-            .replace(/[<>]/g, '') || product.ad,
+        description: sanitizedDescription || product.ad,
         image: product.resimUrl || product.resimler?.[0]?.url,
         brand: product.marka ? {
             '@type': 'Brand',
