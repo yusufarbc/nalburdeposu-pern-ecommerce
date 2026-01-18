@@ -2,11 +2,12 @@
 
 **Hırdavat ve inşaat malzemeleri e-ticaret platformu - PERN Stack**
 
-![ecommerace_software_arch](https://github.com/user-attachments/assets/f82de74c-54e3-48e7-976d-9215f86bdb69)
 
-[![License: GPL3](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Nalbur Deposu Architecture](./docs/ecommerce_software_arch.png)
+[![License: GPL3](https://img.shields.io/badge/License-gpl3-yellow.svg)](https://opensource.org/licenses/MIT)
+
+![etrade_software_arch](https://github.com/user-attachments/assets/69ebf930-6d49-4d68-bc45-311365d38b9d)
+
 
 ## 🚀 Genel Bakış
 
