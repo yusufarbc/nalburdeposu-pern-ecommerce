@@ -1,8 +1,9 @@
 {
     "name": "nalburdeposu-server",
     "version": "1.0.0",
+    "license": "UNLICENSED",
     "description": "Nalbur Deposu Backend - API & Admin Panel Monorepo",
-    "author": "Nalbur Deposu",
+    "author": "Yusuf Talha Arabacı <yusuftalhaarabaci@hotmail.com>",
     "private": true,
     "scripts": {
         "dev": "concurrently -n \"API,ADMIN\" -c \"blue,magenta\" \"npm run dev --prefix api\" \"npm run dev --prefix admin\"",

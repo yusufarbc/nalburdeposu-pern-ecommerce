@@ -3,6 +3,7 @@
     "description": "Nalbur Deposu e-ticaret mağaza arayüzü - React & Vite PWA",
     "private": true,
     "version": "1.0.0",
+    "license": "UNLICENSED",
     "type": "module",
     "scripts": {
         "dev": "vite",

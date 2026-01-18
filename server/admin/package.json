@@ -1,6 +1,8 @@
 {
     "name": "nalburdeposu-admin",
     "version": "1.0.0",
+    "license": "UNLICENSED",
+    "private": true,
     "description": "Nalbur Deposu Admin Paneli - AdminJS",
     "main": "src/server.js",
     "type": "module",

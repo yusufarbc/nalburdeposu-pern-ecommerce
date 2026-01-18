@@ -94,7 +94,7 @@ npx prisma migrate dev --name migration_adi
 
 1. **Repository'yi klonla:**
    ```bash
-   git clone https://github.com/your-username/nalburdeposu.git
+   git clone https://github.com/yusufarbc/nalburdeposu.git
    cd nalburdeposu/server
    ```
 

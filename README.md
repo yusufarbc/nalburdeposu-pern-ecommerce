@@ -2,9 +2,11 @@
 
 **Hırdavat ve inşaat malzemeleri e-ticaret platformu - PERN Stack**
 
+[https://nalburdeposu.com.tr](https://nalburdeposu.com.tr/)
 
 
-[![License: GPL3](https://img.shields.io/badge/License-gpl3-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 
 ![etrade_software_arch](https://github.com/user-attachments/assets/69ebf930-6d49-4d68-bc45-311365d38b9d)
 
@@ -162,7 +164,9 @@ Detaylı dokümantasyon için `/docs` klasörüne bakın:
 
 ## 📄 Lisans
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](./LICENSE) dosyasına bakın.
+Bu proje **Tüm Hakları Saklıdır (All Rights Reserved)** prensibiyle korunmaktadır.
+Kodlar sadece inceleme ve referans amaçlı paylaşılmıştır. İzinsiz kopyalanması, dağıtılması veya ticari/bireysel projelerde kullanılması kesinlikle yasaktır.
+Detaylar için [LICENSE](./LICENSE) dosyasına bakın.
 
 ---
 
