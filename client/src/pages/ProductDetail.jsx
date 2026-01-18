@@ -12,16 +12,8 @@ import { formatPrice, calculateDiscountPercentage } from '../utils/formatters';
 function sanitizeDescription(input) {
     if (!input) return '';
 
-    // Remove script-like blocks iteratively to avoid incomplete multi-character sanitization
-    let previous;
+    // Convert to string and strip angle brackets so any HTML-like content is rendered inert
     let sanitized = String(input);
-    const scriptPattern = /<\s*script[\s\S]*?<\s*\/\s*script\s*>/gi;
-    do {
-        previous = sanitized;
-        sanitized = sanitized.replace(scriptPattern, '');
-    } while (sanitized !== previous);
-
-    // Remove any remaining angle brackets to avoid residual tag-like constructs
     sanitized = sanitized.replace(/[<>]/g, '');
 
     return sanitized;
