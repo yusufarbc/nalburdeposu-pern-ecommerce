@@ -1,0 +1,49 @@
+:{$CADDY_PORT} {
+    # On-Demand TLS: Gelen her istek (IP veya Hostname) için anlık sertifika üret
+    tls internal {
+        on_demand
+    }
+
+    # Gelişmiş Güvenlik Headerları
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    }
+
+    # 1. Logo ve Favicon Erişimi
+    handle /logo.png {
+        root * /var/www/html
+        file_server
+    }
+    
+    handle /favicon.ico {
+        root * /var/www/html
+        file_server
+    }
+
+    # 2. Admin Paneli (Gizli Yol)
+    # Bu yolla başlayan istekler arkadaki servise gider
+    handle {$ADMIN_PATH}* {
+        basic_auth {
+            admin $2a$14$ir22i1GMPmGyoNBLp91HoODA3HjHFFgAt/MfppwV52eLLoInJ9ov6
+        }
+        reverse_proxy nalburdeposu_admin:{$ADMIN_PORT}
+    }
+
+    # 3. Diğer Her Şeyi Engelle
+    # Yukarıdaki kurallara uymayan (örneğin ana sayfa isteği) herkesi reddeder.
+    handle {
+        abort
+    }
+
+    log {
+        output file /logs/access.log {
+            roll_size 1gb
+            roll_keep 5
+            roll_keep_for 720h
+        }
+    }
+}

@@ -1,0 +1,30 @@
+# Nalbur Deposu - Profesyonel Hırdavat & İnşaat Malzemeleri
+
+## Site Hakkında
+Nalbur Deposu (nalburdeposu.com.tr), Samsun merkezli, Türkiye geneline hizmet veren profesyonel bir e-ticaret platformudur. Hırdavat, inşaat malzemeleri, boya grubu, makine grubu ve dekorasyon ürünleri satışı yapmaktadır.
+
+## Ürün Kategorileri
+- **Boya Grubu**: İç/dış cephe boyaları, astarlar, tinerler.
+- **Makine Grubu**: Matkaplar, taşlamalar, kaynak makineleri, jeneratörler.
+- **Hırdavat Grubu**: El aletleri, vidalar, dübeller, kilitler.
+- **Dekorasyon**: Duvar kağıtları, parke, aydınlatma.
+
+## Teknik Özellikler
+- **Altyapı**: PERN Stack (PostgreSQL, Express, React, Node.js)
+- **Frontend**: React + Vite, PWA destekli, mobil uyumlu.
+- **Backend**: REST API üzerinden çalışır. Cloudflare ile korunmaktadır.
+- **Ödeme**: Param güvencesiyle 256-bit SSL şifreli ödeme. Kredi kartı bilgileri sistemde saklanmaz.
+
+## İletişim & Destek
+- E-posta: bilgi@nalburdeposu.com.tr
+- Telefon: 0542 182 68 55
+- Yer: Orta Mah. Dr. Orhan Atılgan Cad. No:24/A Çarşamba, Samsun
+
+## API Kullanımı (Geliştiriciler & Botlar için)
+- **Sitemap**: https://api.nalburdeposu.com.tr/api/v1/sitemap.xml
+- **Ürünler**: Ürün detaylarına site üzerinden veya sitemap aracılığıyla erişilebilir. Harici API erişimi kısıtlıdır.
+
+## Politikalar
+- **Kargo**: 10000 TL üzeri ücretsiz kargo.
+- **İade**: 14 gün içinde koşulsuz iade hakkı (Yasal prosedürlere uygun).
+- **Yurtdışı**: Sadece Türkiye içine satış yapılmaktadır.

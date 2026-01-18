@@ -1,0 +1,128 @@
+services:
+  # Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: nalburdeposu_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # ports:  # Production'da kapalı - sadece internal network erişimi
+    #   - "5432:5432"
+    # API Service
+  api_service:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: nalburdeposu_api
+    restart: always
+    # ports removed - API only accessible via internal network and Cloudflare tunnel
+    environment:
+      - PORT=${API_PORT}
+      - API_URL=${API_URL}
+      - CLIENT_URL=${CLIENT_URL}
+      - CDN_URL=${CDN_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - DATABASE_URL=${DATABASE_URL}
+      - IYZICO_API_KEY=${IYZICO_API_KEY}
+      - IYZICO_SECRET_KEY=${IYZICO_SECRET_KEY}
+      - SMTP_PASS=${SMTP_PASS}
+    volumes:
+      - ./api/src:/app/src
+      - ./api/prisma:/app/prisma
+    env_file:
+      - .env
+    networks:
+      - backend_network
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Admin Panel Service
+  admin_panel:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: nalburdeposu_admin
+    restart: always
+    volumes:
+      - server_logs:/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./admin/src:/app/src # Hot reload for dev
+    environment:
+      - ADMIN_PORT=${ADMIN_PORT}
+      - API_URL=${API_URL}
+      - CLIENT_URL=${CLIENT_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - DATABASE_URL=${DATABASE_URL}
+      - ADMIN_PATH=${ADMIN_PATH}
+      - ADMIN_LOGIN_PATH=${ADMIN_LOGIN_PATH}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - COMPANY_NAME=${COMPANY_NAME}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - SMTP_SENDER=${SMTP_SENDER}
+      - COOKIE_PASSWORD=${COOKIE_PASSWORD}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - NODE_ENV=${NODE_ENV}
+    env_file:
+      - .env
+    networks:
+      - backend_network
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Cloudflare Tunnel Container
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: nalburdeposu_tunnel
+    restart: always
+    command: tunnel run --protocol http2
+    env_file:
+      - .env
+    networks:
+      - backend_network
+
+  # Caddy (Internal Traffic Router)
+  caddy:
+    image: caddy:2-alpine
+    container_name: nalburdeposu_caddy
+    restart: always
+    environment:
+      - CADDY_PORT=${CADDY_PORT}
+      - ADMIN_PORT=${ADMIN_PORT}
+      - ADMIN_PATH=${ADMIN_PATH}
+    ports:
+      - "${CADDY_PORT}:${CADDY_PORT}"
+    volumes:
+      - ./infra/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - ./admin/logo.png:/var/www/html/logo.png
+      - ./admin/favicon.ico:/var/www/html/favicon.ico
+      - ../client/dist:/var/www/html/client
+      - server_logs:/logs
+    networks:
+      - backend_network
+    depends_on:
+      - admin_panel
+
+networks:
+  backend_network:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  postgres_data:
+  server_logs:
