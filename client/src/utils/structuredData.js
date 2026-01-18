@@ -61,7 +61,9 @@ export const generateProductSchema = (product) => {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: product.ad,
-        description: product.aciklama?.replace(/<[^>]*>/g, '') || product.ad,
+        description: product.aciklama
+            ?.replace(/<[^>]*>/g, '')
+            .replace(/[<>]/g, '') || product.ad,
         image: product.resimUrl || product.resimler?.[0]?.url,
         brand: product.marka ? {
             '@type': 'Brand',
