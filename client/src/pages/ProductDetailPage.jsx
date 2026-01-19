@@ -8,6 +8,7 @@ import { ProductCard } from '../components/ProductCard';
 import SEO from '../components/SEO';
 import { generateProductSchema, generateBreadcrumbSchema, combineSchemas } from '../utils/structuredData';
 import { formatPrice, calculateDiscountPercentage } from '../utils/formatters';
+import DOMPurify from 'dompurify';
 
 export function ProductDetailPage() {
     const { id } = useParams();
@@ -93,6 +94,13 @@ export function ProductDetailPage() {
         generateBreadcrumbSchema(breadcrumbs)
     ) : null;
 
+    const rawDescription = product?.aciklama || '';
+    const sanitizedHtmlDescription = DOMPurify.sanitize(rawDescription);
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = sanitizedHtmlDescription;
+    const plainDescription = (tempDiv.textContent || tempDiv.innerText || '').trim();
+    const seoDescription = plainDescription.substring(0, 160) || product?.ad || '';
+
     if (loading) return (
         <div className="max-w-7xl mx-auto px-4 py-12">
             <div className="animate-pulse">
@@ -128,7 +136,7 @@ export function ProductDetailPage() {
         <div className="bg-white min-h-screen pb-20">
             <SEO
                 title={product.ad}
-                description={product.aciklama?.replace(/<[^>]*>/g, '').substring(0, 160) || product.ad}
+                description={seoDescription}
                 keywords={`${product.ad}, ${product.kategori?.ad || ''}, ${product.marka?.ad || ''}, hırdavat, inşaat malzemeleri`}
                 ogType="product"
                 ogImage={product.resimUrl}

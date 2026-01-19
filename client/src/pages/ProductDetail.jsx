@@ -9,6 +9,16 @@ import SEO from '../components/SEO';
 import { generateProductSchema, generateBreadcrumbSchema, combineSchemas } from '../utils/structuredData';
 import { formatPrice, calculateDiscountPercentage } from '../utils/formatters';
 
+function sanitizeDescription(input) {
+    if (!input) return '';
+
+    // Convert to string and strip angle brackets so any HTML-like content is rendered inert
+    let sanitized = String(input);
+    sanitized = sanitized.replace(/[<>]/g, '');
+
+    return sanitized;
+}
+
 export function ProductDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -128,7 +138,7 @@ export function ProductDetail() {
         <div className="bg-white min-h-screen pb-20">
             <SEO
                 title={product.ad}
-                description={product.aciklama?.replace(/<[^>]*>/g, '').substring(0, 160) || product.ad}
+                description={sanitizeDescription(product.aciklama).substring(0, 160) || product.ad}
                 keywords={`${product.ad}, ${product.kategori?.ad || ''}, ${product.marka?.ad || ''}, hırdavat, inşaat malzemeleri`}
                 ogType="product"
                 ogImage={product.resimUrl}

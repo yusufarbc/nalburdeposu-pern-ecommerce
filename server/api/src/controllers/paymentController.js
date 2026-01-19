@@ -94,9 +94,17 @@ export class PaymentController {
      * @param {import('express').Response} res - Express response object.
      */
     getInstallments = asyncHandler(async (req, res) => {
-        const { bin, amount } = req.query;
+        const { amount } = req.query;
+        const rawBin = req.query.bin;
 
-        if (!bin || bin.length < 6) {
+        let binValue = null;
+        if (typeof rawBin === 'string') {
+            binValue = rawBin;
+        } else if (Array.isArray(rawBin) && typeof rawBin[0] === 'string') {
+            binValue = rawBin[0];
+        }
+
+        if (!binValue || binValue.length < 6) {
             return res.status(400).json({
                 status: 'failure',
                 message: 'Kart BIN numarası (ilk 6 hane) gereklidir.'
@@ -111,7 +119,7 @@ export class PaymentController {
         }
 
         try {
-            const installments = await this.orderService.getInstallmentOptions(bin, Number(amount));
+            const installments = await this.orderService.getInstallmentOptions(binValue, Number(amount));
             res.json({
                 status: 'success',
                 installments

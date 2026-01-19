@@ -35,7 +35,7 @@ export const fetchProductById = async (id) => {
         const response = await api.get(`/api/v1/products/${id}`);
         return response.data;
     } catch (error) {
-        console.error(`Failed to fetch product ${id}:`, error);
+        console.error('Failed to fetch product with id:', id, error);
         throw new Error('Ürün detayları yüklenemedi.');
     }
 };
