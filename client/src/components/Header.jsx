@@ -102,7 +102,7 @@ export function Header() {
                         {/* Right Actions (Desktop) */}
                         <div className="flex items-center gap-4">
                             <button
-                                className="flex items-center gap-1.5 md:gap-3 bg-action-red text-white px-2 md:px-5 py-2 md:py-2.5 rounded-lg hover:bg-red-700 transition-all shadow-md transform hover:scale-105 active:scale-95 group relative overflow-hidden"
+                                className="flex items-center gap-1.5 md:gap-3 bg-action-red text-white px-3 md:px-5 py-2 md:py-2.5 rounded-lg hover:bg-red-700 transition-all shadow-md transform hover:scale-105 active:scale-95 group relative overflow-hidden"
                                 onClick={toggleSidebar}
                             >
                                 <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
