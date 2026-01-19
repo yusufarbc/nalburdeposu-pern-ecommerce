@@ -102,14 +102,14 @@ export function Header() {
                         {/* Right Actions (Desktop) */}
                         <div className="flex items-center gap-4">
                             <button
-                                className="flex items-center gap-3 bg-action-red text-white px-5 py-2.5 rounded-lg hover:bg-red-700 transition-all shadow-md transform hover:scale-105 active:scale-95 group relative overflow-hidden"
+                                className="flex items-center gap-2 md:gap-3 bg-action-red text-white px-3 md:px-5 py-2 md:py-2.5 rounded-lg hover:bg-red-700 transition-all shadow-md transform hover:scale-105 active:scale-95 group relative overflow-hidden"
                                 onClick={toggleSidebar}
                             >
                                 <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                <ShoppingCart size={22} className="relative z-10" />
-                                <div className="text-left leading-none relative z-10">
-                                    <div className="text-[10px] font-bold opacity-70">Sepetim</div>
-                                    <div className="text-sm font-black">{cartCount} Ürün</div>
+                                <ShoppingCart size={20} className="relative z-10 md:w-[22px] md:h-[22px]" />
+                                <div className="text-left leading-tight relative z-10">
+                                    <div className="text-[9px] md:text-[10px] font-bold opacity-70">Sepetim</div>
+                                    <div className="text-xs md:text-sm font-black whitespace-nowrap">{cartCount} Ürün</div>
                                 </div>
                             </button>
                         </div>

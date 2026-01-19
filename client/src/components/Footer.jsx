@@ -120,9 +120,12 @@ export function Footer() {
                                 <li key={item.name}>
                                     <Link
                                         to={item.href}
-                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 group text-sm"
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 group text-sm pl-2"
                                     >
-                                        <span className="transform -translate-x-2 group-hover:translate-x-0 transition-transform">{item.name}</span>
+                                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <ChevronRight size={14} />
+                                        </span>
+                                        <span className="transform -translate-x-4 group-hover:translate-x-0 transition-transform">{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
