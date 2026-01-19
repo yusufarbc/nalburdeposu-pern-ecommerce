@@ -20,47 +20,86 @@ Nalbur Deposu, dijital pazarlama için Meta ve Google Workspace ekosistemlerini 
 
 **Ana İletişim Kanalı** - Müşteri desteği için WhatsApp Business kullanılmaktadır.
 
+- **Telefon Numarası**: +90 542 182 68 55
+- **Kullanım Alanları**: 
+  - Müşteri desteği ve satış öncesi sorular
+  - Sipariş takibi
+  - Hızlı iletişim
+
 ### Entegrasyon Noktaları
 
-- **Footer**: WhatsApp iletişim butonu
-- **Sipariş Takip**: Destek için WhatsApp yönlendirmesi
-- **Ürün Detay**: Satış öncesi sorular için WhatsApp
+1. **Header** (`Header.jsx`)
+   - Telefon numarası: `tel:+905421826855`
+   - Görünürlük: Desktop üst bar
 
-### Yapılandırma
+2. **Footer** (`Footer.jsx`)
+   - WhatsApp doğrudan mesaj butonu
+   - URL format: `https://wa.me/905421826855?text=Merhaba...`
+   - Social media icon grubu içinde
 
-WhatsApp numarası `Header.jsx` ve `Footer.jsx` bileşenlerinde tanımlıdır:
-
-```javascript
-const whatsappUrl = `https://wa.me/905XXXXXXXXX?text=${encodeURIComponent(message)}`;
-```
+3. **Gelecek Entegrasyonlar (Planlanıyor)**
+   - [ ] Ürün detay sayfalarında "WhatsApp'tan Sor" butonu
+   - [ ] Sipariş takip sayfasında WhatsApp destek bağlantısı
+   - [ ] WhatsApp Business API ile otomatik mesajlaşma
 
 ## Google Workspace
 
-| Servis | Kullanım |
-|--------|----------|
-| Gmail | bilgi@nalburdeposu.com.tr |
-| Google Analytics | Web trafiği analizi (planlanıyor) |
-| Google Search Console | SEO izleme |
+**E-posta Yönetimi**: bilgi@nalburdeposu.com.tr Google Workspace hesabı kullanılmaktadır.
+
+### Kullanılan Servisler
+
+| Servis | Kullanım | Durum |
+|--------|----------|-------|
+| **Gmail** | bilgi@nalburdeposu.com.tr (Ana iletişim hesabı) | ✅ Aktif |
+| **Google Search Console** | SEO izleme, sitemap yönetimi | ✅ Aktif |
+| **Google Merchant Center** | Google Shopping feed entegrasyonu | ✅ Aktif |
+| **Google Analytics** | Web trafiği ve dönüşüm analizi | 🔄 Planlanıyor |
+| **Google Tag Manager** | Event tracking | 🔄 Planlanıyor |
+
+### Google Shopping Entegrasyonu
+
+- **Feed URL**: `https://api.nalburdeposu.com.tr/api/v1/feeds/google-shopping.xml`
+- **Güncelleme**: Otomatik (her gün)
+- **İçerik**: Ürün bilgileri, stok, fiyat
+- **Detaylı Dokümantasyon**: [Google_Shopping.md](./Google_Shopping.md)
 
 ## E-posta Servisi (Brevo)
 
-Transaksiyonel e-postalar Brevo SMTP üzerinden gönderilmektedir:
+**Transaksiyonel E-posta Sağlayıcı**: Brevo (Sendinblue) SMTP servisi kullanılmaktadır.
 
-- Sipariş onayı
-- Kargo bildirimi
-- Sipariş iptali
-- İade talebi bildirimleri
+### Gönderilen E-posta Tipleri
 
-### Yapılandırma
+- ✅ Sipariş onayı
+- ✅ Kargo bildirimi (Sipariş kargoya verildi)
+- ✅ Sipariş teslim edildi
+- ✅ Sipariş iptali (Admin veya kullanıcı)
+- ✅ İade talebi oluşturuldu
+- ✅ İade talebi onaylandı/reddedildi
 
-`.env` dosyasında:
+### Backend Yapılandırma
+
+Brevo SMTP ayarları `server/api/.env` dosyasında:
 
 ```env
+# Brevo (Sendinblue) SMTP Configuration
 SMTP_HOST=smtp-relay.brevo.com
 SMTP_PORT=587
-SMTP_USER=your_brevo_user
-SMTP_PASS=your_brevo_password
+SMTP_SECURE=false
+SMTP_USER=your_brevo_login_email
+SMTP_PASS=your_brevo_smtp_key
 SMTP_SENDER=bilgi@nalburdeposu.com.tr
+```
+
+### Servis Katmanı
+
+E-posta gönderimi `server/api/src/services/email.service.js` üzerinden yönetilir:
+
+```javascript
+// Sipariş onay e-postası
+await emailService.sendOrderConfirmation(order, kullaniciEmail);
+
+// Kargo bildirim e-postası  
+await emailService.sendShipmentNotification(siparis);
 ```
 
 ## SEO Entegrasyonları

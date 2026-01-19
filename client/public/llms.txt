@@ -11,9 +11,10 @@ Nalbur Deposu (nalburdeposu.com.tr), Samsun merkezli, Türkiye geneline hizmet v
 
 ## Teknik Özellikler
 - **Altyapı**: PERN Stack (PostgreSQL, Express, React, Node.js)
-- **Frontend**: React + Vite, PWA destekli, mobil uyumlu.
-- **Backend**: REST API üzerinden çalışır. Cloudflare ile korunmaktadır.
-- **Ödeme**: Param güvencesiyle 256-bit SSL şifreli ödeme. Kredi kartı bilgileri sistemde saklanmaz.
+- **Frontend**: React + Vite, PWA destekli, mobil uyumlu, Cloudflare Pages'de deploy
+- **Backend**: REST API, MSC Architecture, Prisma ORM, Docker Compose ile VDS'de deploy
+- **Ödeme**: Param Payment Gateway ile güvenli ödeme işleme (3D Secure destekli)
+- **Güvenlik**: Cloudflare WAF, HTTPS, yurtdışı trafiğine kapalı
 
 ## İletişim & Destek
 - E-posta: bilgi@nalburdeposu.com.tr
@@ -25,6 +26,7 @@ Nalbur Deposu (nalburdeposu.com.tr), Samsun merkezli, Türkiye geneline hizmet v
 - **Ürünler**: Ürün detaylarına site üzerinden veya sitemap aracılığıyla erişilebilir. Harici API erişimi kısıtlıdır.
 
 ## Politikalar
-- **Kargo**: 10000 TL üzeri ücretsiz kargo.
-- **İade**: 14 gün içinde koşulsuz iade hakkı (Yasal prosedürlere uygun).
-- **Yurtdışı**: Sadece Türkiye içine satış yapılmaktadır.
+- **Kargo**: Belirli tutar üzeri ücretsiz kargo (güncel limit için site ayarlarına bakınız)
+- **İade**: 14 gün içinde koşulsuz iade hakkı (Mesafeli Satış Sözleşmesi kapsamında)
+- **Teslimat**: Saat 12:00'ye kadar verilen siparişler aynı gün kargoya teslim edilir
+- **Kapsam**: Sadece Türkiye geneline kargo ile satış yapılmaktadır

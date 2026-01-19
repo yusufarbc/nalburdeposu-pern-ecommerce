@@ -19,9 +19,11 @@ Nalbur Deposu, hırdavat ve inşaat malzemeleri satışı için geliştirilmiş 
 - 🛒 **Mağaza**: React + Vite ile geliştirilmiş PWA destekli mobil uyumlu arayüz
 - 🔌 **Backend**: Express.js REST API (MSC Architecture), Prisma ORM ve Zod validasyonu
 - 👨‍💼 **Admin Panel**: AdminJS ile kapsamlı yönetim paneli
-- 💳 **Ödeme**: Iyzico entegrasyonu (3D Secure)
+- 💳 **Ödeme**: Param Payment Gateway entegrasyonu (3D Secure)
 - 📧 **E-posta**: Brevo transaksiyonel e-posta servisi
 - ☁️ **Altyapı**: Docker Compose ile konteynerize deployment
+- 🎯 **SOLID Prensipleri**: Yazılım mimarisi SOLID prensiplerine uygun tasarlanmıştır
+- 📱 **Dijital Pazarlama**: Meta Business Suite (Facebook, Instagram, WhatsApp) ve Google Workspace entegrasyonu
 
 ## 🏗️ Mimari
 
@@ -79,6 +81,8 @@ nalburdeposu/
 | Cloudflare Tunnel | Güvenli backend erişimi |
 | Caddy | Reverse proxy |
 | Cloudflare R2 | Object storage (resimler) |
+| VDS Server | Backend (Docker Compose deployment) |
+| Param | Payment Gateway (3D Secure) |
 
 ## 📦 Kurulum
 
