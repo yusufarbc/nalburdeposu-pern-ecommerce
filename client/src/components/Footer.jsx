@@ -165,7 +165,6 @@ export function Footer() {
                         <ul className="space-y-3">
                             {[
                                 { name: 'Hakkımızda', href: '/hakkimizda' },
-                                { name: 'Hakkımızda', href: '/hakkimizda' },
                                 { name: 'Mesafeli Satış Sözleşmesi', href: '/mesafeli-satis-sozlesmesi' },
                                 { name: 'KVKK Aydınlatma Metni', href: '/gizlilik-ve-kvkk' },
                                 { name: 'Ön Bilgilendirme Formu', href: '/on-bilgilendirme' }
