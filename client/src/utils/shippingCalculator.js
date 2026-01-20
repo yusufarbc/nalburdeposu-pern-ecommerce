@@ -80,14 +80,15 @@ export const calculateShippingFee = ({ cartTotal, totalWeight, settings }) => {
             shippingFee = null;
         }
     }
-}
 
-return {
-    shippingFee,
-    isFreeShipping,
-    weightError: shippingFee === null // Flag to indicate weight limit exceeded
+
+    return {
+        shippingFee,
+        isFreeShipping,
+        weightError: shippingFee === null // Flag to indicate weight limit exceeded
+    };
 };
-};
+
 
 /**
  * Get shipping info message for display
