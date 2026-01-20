@@ -51,10 +51,10 @@ const TroyIcon = () => (
 
 export function Footer() {
     return (
-        <footer className="bg-[#111111] text-gray-400 pt-20 pb-8 border-t border-gray-800/50 font-sans">
+        <footer className="bg-[#111111] text-gray-400 pt-16 pb-8 font-sans">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Top Grid: Links & Brand */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 mb-12">
 
                     {/* 1. Brand & Contact */}
                     <div className="space-y-6">

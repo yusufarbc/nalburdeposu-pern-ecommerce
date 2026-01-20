@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Label, Button, Text, TextArea, Badge, Icon } from '@adminjs/design-system';
+import React, { useState } from 'react';
+import { Box, Label, Button, Text } from '@adminjs/design-system';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 /**
- * Custom Product Description Editor
- * Provides quick templates and HTML preview to enhance the description editing experience.
+ * Custom Product Description Editor with WYSIWYG (ReactQuill)
+ * Includes quick templates for standardized content.
  */
 const ProductDescription = (props) => {
     const { property, record, onChange } = props;
     const value = record.params[property.name] || '';
     const error = record.errors && record.errors[property.name];
-
-    const [isPreview, setIsPreview] = useState(false);
 
     // Templates to insert
     const templates = {
@@ -25,23 +25,13 @@ const ProductDescription = (props) => {
             <td style="padding: 10px; font-weight: bold;">Malzeme</td>
             <td style="padding: 10px;">Çelik</td>
         </tr>
-        <tr style="border-bottom: 1px solid #eee;">
-            <td style="padding: 10px; font-weight: bold;">Boyut</td>
-            <td style="padding: 10px;">100x100 cm</td>
-        </tr>
     </tbody>
 </table>`,
         features: `
-<ul style="list-style-type: none; padding: 0; margin-bottom: 20px;">
-    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
-        ✅ <strong>Yüksek Dayanıklılık:</strong> Zorlu koşullara karşı dirençli.
-    </li>
-    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
-        ✅ <strong>Kolay Montaj:</strong> Ekstra ekipman gerektirmez.
-    </li>
-    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
-        ✅ <strong>Garanti:</strong> 2 Yıl üretici garantili.
-    </li>
+<ul style="margin-bottom: 20px;">
+    <li><strong>Yüksek Dayanıklılık:</strong> Zorlu koşullara karşı dirençli.</li>
+    <li><strong>Kolay Montaj:</strong> Ekstra ekipman gerektirmez.</li>
+    <li><strong>Garanti:</strong> 2 Yıl üretici garantili.</li>
 </ul>`,
         infoBox: `
 <div style="background-color: #f0f9ff; border-left: 4px solid #007bff; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
@@ -53,79 +43,62 @@ const ProductDescription = (props) => {
     const handleInsert = (templateKey) => {
         const template = templates[templateKey];
         if (template) {
-            onChange(property.name, value + '\n' + template);
+            // Append template to current value
+            onChange(property.name, value + template);
         }
     };
+
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link', 'image'],
+            ['clean']
+        ],
+    };
+
+    const formats = [
+        'header',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet',
+        'link', 'image'
+    ];
 
     return (
         <Box mb="xl">
             <Label>{property.label}</Label>
 
-            {/* Toolbar */}
+            {/* Template Buttons */}
             <Box flex gap="sm" mb="sm" flexWrap="wrap">
-                <Button
-                    size="sm"
-                    variant="outlined"
-                    onClick={() => handleInsert('specs')}
-                    type="button"
-                >
-                    <span role="img" aria-label="table">📊</span> Teknik Tablo Ekle
+                <Button size="sm" variant="outlined" onClick={() => handleInsert('specs')} type="button">
+                    📊 Teknik Tablo Ekle
                 </Button>
-                <Button
-                    size="sm"
-                    variant="outlined"
-                    onClick={() => handleInsert('features')}
-                    type="button"
-                >
-                    <span role="img" aria-label="list">✅</span> Özellik Listesi Ekle
+                <Button size="sm" variant="outlined" onClick={() => handleInsert('features')} type="button">
+                    ✅ Özellik Listesi Ekle
                 </Button>
-                <Button
-                    size="sm"
-                    variant="outlined"
-                    onClick={() => handleInsert('infoBox')}
-                    type="button"
-                >
-                    <span role="img" aria-label="info">ℹ️</span> Bilgi Kutusu Ekle
-                </Button>
-                <Box flexGrow={1} />
-                <Button
-                    size="sm"
-                    variant={isPreview ? 'primary' : 'light'}
-                    onClick={() => setIsPreview(!isPreview)}
-                    type="button"
-                >
-                    {isPreview ? '✏️ Düzenlemeye Dön' : '👁️ Önizleme'}
+                <Button size="sm" variant="outlined" onClick={() => handleInsert('infoBox')} type="button">
+                    ℹ️ Bilgi Kutusu Ekle
                 </Button>
             </Box>
 
-            {/* Editor Area */}
-            {isPreview ? (
-                <Box
-                    bg="white"
-                    p="xl"
-                    border="1px solid"
-                    borderColor="grey40"
-                    borderRadius="sm"
-                    minHeight="300px"
-                    dangerouslySetInnerHTML={{ __html: value }}
-                />
-            ) : (
-                <TextArea
-                    width="100%"
-                    rows={15}
-                    placeholder="HTML içeriğinizi buraya yazın veya üstteki butonları kullanarak şablon ekleyin..."
+            {/* Editor */}
+            <Box bg="white" style={{ minHeight: '300px' }}>
+                <ReactQuill
+                    theme="snow"
                     value={value}
-                    onChange={(e) => onChange(property.name, e.target.value)}
-                    style={{ fontFamily: 'monospace', fontSize: '12px' }}
+                    onChange={(content) => onChange(property.name, content)}
+                    modules={modules}
+                    formats={formats}
+                    style={{ height: '300px', marginBottom: '50px' }}
                 />
-            )}
+            </Box>
 
             {error && (
                 <Text color="danger" variant="sm" mt="xs">{error.message}</Text>
             )}
-
-            <Text variant="sm" color="grey60" mt="sm">
-                * HTML etiketleri kullanabilir veya hazır şablonları ekleyip düzenleyebilirsiniz.
+            <Text variant="sm" color="grey60" mt="lg">
+                * Görsel düzenleyici kullanarak içeriği zenginleştirebilirsiniz.
             </Text>
         </Box>
     );

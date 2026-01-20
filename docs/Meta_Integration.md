@@ -109,7 +109,7 @@ await emailService.sendShipmentNotification(siparis);
 ```
 User-agent: *
 Allow: /
-Sitemap: https://nalburdeposu.com.tr/sitemap.xml
+Sitemap: https://api.nalburdeposu.com.tr/api/v1/sitemap.xml
 ```
 
 ### Structured Data (JSON-LD)

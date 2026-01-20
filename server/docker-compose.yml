@@ -32,7 +32,6 @@ services:
       - CDN_URL=${CDN_URL}
       - CORS_ORIGIN=${CORS_ORIGIN}
       - DATABASE_URL=${DATABASE_URL}
-      - DATABASE_URL=${DATABASE_URL}
       # Iyzico Disabled
       # - IYZICO_API_KEY=${IYZICO_API_KEY}
       # - IYZICO_SECRET_KEY=${IYZICO_SECRET_KEY}
