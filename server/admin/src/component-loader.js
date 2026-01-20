@@ -22,6 +22,7 @@ const Components = {
     ReturnStatusBadge: componentLoader.add('ReturnStatusBadge', './components/ReturnStatusBadge'),
     ReturnShow: componentLoader.add('ReturnShow', './components/ReturnShow'),
     RejectReturnAction: componentLoader.add('RejectReturnAction', './components/RejectReturnAction'),
+    ProductDescription: componentLoader.add('ProductDescription', './components/ProductDescription'),
 };
 
 componentLoader.override('Login', './components/Login');

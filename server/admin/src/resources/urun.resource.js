@@ -193,7 +193,10 @@ export const CreateUrunResource = (prisma, componentLoader) => {
                     type: 'richtext',
                     position: 16,
                     label: '📝 Ürün Açıklaması',
-                    isVisible: { list: false, show: true, edit: true, new: true, filter: false }
+                    isVisible: { list: false, show: true, edit: true, new: true, filter: false },
+                    components: {
+                        edit: Components.ProductDescription
+                    }
                 },
 
                 // === SYSTEM FIELDS (Hidden/Auto) ===

@@ -219,11 +219,7 @@ export function OrderTrackingPage() {
                             </div>
                             <div className="flex justify-between items-center text-gray-600">
                                 <span>Kargo Ücreti</span>
-                                {Number(order.kargoUcreti) > 0 ? (
-                                    <span>₺{Number(order.kargoUcreti).toFixed(2)}</span>
-                                ) : (
-                                    <span className="text-green-600 font-medium">Ücretsiz</span>
-                                )}
+                                <span>₺{Number(order.kargoUcreti || 0).toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between items-center text-xl font-bold text-gray-900 border-t pt-2 mt-2">
                                 <span>Toplam Tutar</span>
