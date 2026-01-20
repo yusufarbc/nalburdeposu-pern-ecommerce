@@ -106,8 +106,8 @@ export function Footer() {
 
                     {/* 2. Sütun: Alışveriş */}
                     <div>
-                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                            <span className="w-1 h-6 bg-brand-yellow rounded-full"></span>
+                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-brand-yellow rounded-full"></span>
                             Alışveriş
                         </h3>
                         <ul className="space-y-3">
@@ -120,12 +120,10 @@ export function Footer() {
                                 <li key={item.name}>
                                     <Link
                                         to={item.href}
-                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 group text-sm"
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-3 text-sm group"
                                     >
-                                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <ChevronRight size={14} />
-                                        </span>
-                                        <span className="transform -translate-x-4 group-hover:translate-x-0 transition-transform">{item.name}</span>
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-brand-yellow transition-colors flex-shrink-0" />
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -134,8 +132,8 @@ export function Footer() {
 
                     {/* 3. Sütun: Müşteri */}
                     <div>
-                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                            <span className="w-1 h-6 bg-brand-yellow rounded-full"></span>
+                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-brand-yellow rounded-full"></span>
                             Müşteri
                         </h3>
                         <ul className="space-y-3">
@@ -148,12 +146,10 @@ export function Footer() {
                                 <li key={item.name}>
                                     <Link
                                         to={item.href}
-                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 group text-sm"
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 text-sm group"
                                     >
-                                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <ChevronRight size={14} />
-                                        </span>
-                                        <span className="transform -translate-x-4 group-hover:translate-x-0 transition-transform">{item.name}</span>
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-brand-yellow transition-colors" />
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -162,12 +158,13 @@ export function Footer() {
 
                     {/* 4. Sütun: Kurumsal */}
                     <div>
-                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                            <span className="w-1 h-6 bg-brand-yellow rounded-full"></span>
+                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-brand-yellow rounded-full"></span>
                             Kurumsal
                         </h3>
                         <ul className="space-y-3">
                             {[
+                                { name: 'Hakkımızda', href: '/hakkimizda' },
                                 { name: 'Hakkımızda', href: '/hakkimizda' },
                                 { name: 'Mesafeli Satış Sözleşmesi', href: '/mesafeli-satis-sozlesmesi' },
                                 { name: 'KVKK Aydınlatma Metni', href: '/gizlilik-ve-kvkk' },
@@ -176,12 +173,10 @@ export function Footer() {
                                 <li key={item.name}>
                                     <Link
                                         to={item.href}
-                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 group text-sm"
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 text-sm group"
                                     >
-                                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <ChevronRight size={14} />
-                                        </span>
-                                        <span className="transform -translate-x-4 group-hover:translate-x-0 transition-transform">{item.name}</span>
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-brand-yellow transition-colors" />
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -190,17 +185,33 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-gray-500 text-sm text-center md:text-left">
-                        &copy; {new Date().getFullYear()} Nalbur Deposu. Tüm hakları saklıdır.
-                    </p>
-                    <div className="flex items-center gap-2 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
-                        {/* Payment Icons */}
-                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg opacity-80 hover:opacity-100 transition-opacity">
-                            <VisaIcon />
-                            <MastercardIcon />
-                            <TroyIcon />
-                            <span className="text-white font-bold opacity-70 tracking-widest text-sm ml-1">Param</span>
+                <div className="pt-8 border-t border-white/10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-8">
+                        <div className="text-gray-500 text-xs leading-relaxed space-y-1">
+                            <p><strong className="text-gray-400">Ticari Unvan:</strong> AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</p>
+                            <p><strong className="text-gray-400">Adres:</strong> Aşağı Kavacık Mah. Merkez Sk. No: 46 Çarşamba / Samsun</p>
+                            <p className="flex flex-wrap gap-x-4">
+                                <span><strong className="text-gray-400">MERSİS No:</strong> 0071006548300015</span>
+                                <span><strong className="text-gray-400">Vergi Dairesi / No:</strong> Çarşamba V.D. / 0710065483</span>
+                            </p>
+                        </div>
+                        <div className="flex justify-start md:justify-end">
+                            <div className="flex items-center gap-2 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg opacity-80 hover:opacity-100 transition-opacity">
+                                    <VisaIcon />
+                                    <MastercardIcon />
+                                    <TroyIcon />
+                                    <span className="text-white font-bold opacity-70 tracking-widest text-sm ml-1">Param</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="text-center md:text-left pt-4 border-t border-white/5 flex flex-col gap-2">
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+                            <p className="text-gray-600 text-xs">
+                                &copy; {new Date().getFullYear()} Nalbur Deposu. Bir <strong>AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</strong> kuruluşudur. | MERSİS: 0071006548300015 | Vergi No: 0710065483
+                            </p>
                         </div>
                     </div>
                 </div>

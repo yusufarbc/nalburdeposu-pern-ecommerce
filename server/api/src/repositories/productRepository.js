@@ -74,6 +74,24 @@ export class ProductRepository extends BaseRepository {
     }
 
     /**
+     * Retrieves a single product by its Slug with relations.
+     * @param {string} slug - The SEO slug of the product.
+     * @returns {Promise<import('@prisma/client').Urun|null>} The product with relations.
+     */
+    async findBySlug(slug) {
+        return this.model.findUnique({
+            where: { slug },
+            include: {
+                kategori: true,
+                marka: true,
+                resimler: {
+                    orderBy: { sira: 'asc' }
+                }
+            }
+        });
+    }
+
+    /**
      * Increments the view count for a product.
      * @param {string} id - The ID of the product.
      * @returns {Promise<void>}

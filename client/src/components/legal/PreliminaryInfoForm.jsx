@@ -1,36 +1,54 @@
+import { Info } from 'lucide-react';
 import React from 'react';
 
-export const PreliminaryInfoForm = () => {
+/**
+ * Ön Bilgilendirme Formu
+ * 2026 Yönetmeliği Uyumlu
+ */
+export function PreliminaryInfoForm() {
     return (
-        <div className="space-y-4 text-gray-700">
-            <h2 className="text-xl font-bold text-corporate-black mt-6 mb-3">1. SATICI BİLGİLERİ</h2>
-            <p className="mb-4">
-                <strong>Unvan:</strong> AR-KAR GIDA TARIM ÜRÜNLERİ VE TAŞIMACILIK TİCARET LİMİTED ŞİRKETİ<br />
-                <strong>Marka:</strong> Nalbur Deposu<br />
-                <strong>Adres:</strong> Samsun, Türkiye<br />
-                <strong>Telefon:</strong> +90 542 182 68 55<br />
-                <strong>E-posta:</strong> bilgi@nalburdeposu.com.tr
-            </p>
+        <div className="max-w-4xl mx-auto px-4 py-8">
+            <h1 className="text-3xl font-black mb-6 flex items-center gap-3">
+                <Info className="text-brand-yellow" size={32} />
+                Ön Bilgilendirme Formu
+            </h1>
 
-            <h2 className="text-xl font-bold text-corporate-black mt-6 mb-3">2. KONU</h2>
-            <p className="mb-4">
-                İşbu formun konusu, ALICI'nın elektronik ortamda sipariş verdiği, aşağıda nitelikleri ve satış fiyatı belirtilen ürünün satışı ve teslimi ile ilgili olarak 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri gereğince bilgilendirilmesidir.
-            </p>
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 space-y-6 text-gray-700 leading-relaxed text-sm">
 
-            <h2 className="text-xl font-bold text-corporate-black mt-6 mb-3">3. ÜRÜN VE FİYAT BİLGİLERİ</h2>
-            <p className="mb-4">
-                Satın alınan ürünlerin cinsi, miktarı, marka/modeli, rengi, adedi, satış bedeli ve ödeme şekli, siparişin sonlandığı andaki bilgilerden oluşmaktadır.
-            </p>
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">1. Satıcı Bilgileri</h2>
+                    <ul className="list-disc pl-5 space-y-1">
+                        <li><strong>Unvan:</strong> AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</li>
+                        <li><strong>Adres:</strong> Aşağı Kavacık Mah. Merkez Sk. No: 46 Çarşamba / Samsun</li>
+                        <li><strong>Mersis No:</strong> 0071006548300015</li>
+                        <li><strong>Telefon:</strong> 0542 182 68 55</li>
+                        <li><strong>E-posta:</strong> bilgi@nalburdeposu.com.tr</li>
+                    </ul>
+                </section>
 
-            <h2 className="text-xl font-bold text-corporate-black mt-6 mb-3">4. CAYMA HAKKI</h2>
-            <p className="mb-4">
-                ALICI, ürünü teslim aldığı tarihten itibaren 14 (on dört) gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayma hakkına sahiptir. Cayma hakkının kullanılması için bu süre içinde SATICI'ya e-posta ile bildirimde bulunulması şarttır.
-            </p>
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">2. Ürün ve Fiyat Bilgileri</h2>
+                    <p>Sipariş aşamasında ALICI’nın incelediği ürünlerin temel nitelikleri, tüm vergiler dahil toplam satış fiyatı, adet bilgisi ve nakliye giderleri sipariş özeti ekranında açıkça belirtilmiştir. ALICI bu bilgileri görerek onaylamıştır.</p>
+                </section>
 
-            <h2 className="text-xl font-bold text-corporate-black mt-6 mb-3">5. VERİ GÜVENLİĞİ VE GİZLİLİK</h2>
-            <p className="mb-4">
-                Alıcının kişisel verileri, <a href="/gizlilik-ve-kvkk" className="text-brand-yellow font-bold hover:underline">Gizlilik Politikası ve KVKK Aydınlatma Metni</a> kapsamında korunmakta ve işlenmektedir.
-            </p>
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">3. Ödeme ve Teslimat</h2>
+                    <p>Ödeme, kredi kartı veya banka kartı ile sipariş anında tahsil edilir. Teslimat, anlaşmalı kargo şirketi aracılığıyla ALICI’nın belirttiği adrese yapılır. Kargo ücreti, aksi belirtilmedikçe ALICI'ya aittir ve sipariş toplamına eklenir.</p>
+                </section>
+
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">4. Cayma Hakkı</h2>
+                    <p>ALICI, 14 (on dört) gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayma hakkına sahiptir. Cayma süresi, malın ALICI'ya teslim edildiği gün başlar.</p>
+                    <p className="mt-2 text-red-600 font-bold">İstisnalar:</p>
+                    <p>Paketi açılmış kimyasal ürünler (tiner, boya vb.), özel ölçülü ürünler ve doğası gereği iadesi mümkün olmayan mallarda cayma hakkı kullanılamaz.</p>
+                </section>
+
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">5. Şikayet ve İtirazlar</h2>
+                    <p>Tüketici, şikayet ve itirazları konusundaki başvurularını, her yıl Gümrük ve Ticaret Bakanlığı tarafından belirlenen parasal sınırlar dahilinde, yerleşim yerinin bulunduğu veya tüketici işleminin yapıldığı yerdeki Tüketici Hakem Heyetine veya Tüketici Mahkemesine yapabilir.</p>
+                </section>
+
+            </div>
         </div>
     );
-};
+}

@@ -20,12 +20,12 @@ function sanitizeDescription(input) {
 }
 
 export function ProductDetail() {
-    const { id } = useParams();
+    const { id, slug } = useParams();
     const navigate = useNavigate();
     const { addToCart } = useCart();
 
-    // Use custom hooks for data fetching
-    const { product, loading, error } = useProduct(id);
+    // Use custom hooks for data fetching (fetches by slug if present, otherwise by id)
+    const { product, loading, error } = useProduct(slug || id);
     const { products: relatedProducts } = useProducts(
         product?.kategoriId ? { kategoriId: product.kategoriId } : null
     );

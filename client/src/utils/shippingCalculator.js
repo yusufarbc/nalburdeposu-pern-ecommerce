@@ -37,54 +37,56 @@ export const calculateShippingFee = ({ cartTotal, totalWeight, settings }) => {
     let isFreeShipping = false;
 
     // Check if cart total qualifies for free shipping
+    // DEPRECATED: Free shipping disabled by admin request
+    /*
     if (cartTotal >= freeShippingThreshold) {
         shippingFee = 0;
         isFreeShipping = true;
     }
-    // Calculate shipping based on weight tiers (Google Merchant Compatible)
     else {
-        // 1. Dynamic check from Admin Panel Settings
-        const priceList = settings.kargoFiyatListesi;
+    */
+    // 1. Dynamic check from Admin Panel Settings
+    const priceList = settings.kargoFiyatListesi;
 
-        if (Array.isArray(priceList) && priceList.length > 0) {
-            // Sort list by maxWeight
-            const sortedList = [...priceList].sort((a, b) => a.maxWeight - b.maxWeight);
-            const matchingTier = sortedList.find(tier => totalWeight <= tier.maxWeight);
+    if (Array.isArray(priceList) && priceList.length > 0) {
+        // Sort list by maxWeight
+        const sortedList = [...priceList].sort((a, b) => a.maxWeight - b.maxWeight);
+        const matchingTier = sortedList.find(tier => totalWeight <= tier.maxWeight);
 
-            if (matchingTier) {
-                shippingFee = Number(matchingTier.price);
-            } else {
-                // Exceeds max weight logic
-                const lastTier = sortedList[sortedList.length - 1];
-                const extraWeight = Math.ceil(totalWeight - lastTier.maxWeight);
-                shippingFee = Number(lastTier.price) + (extraWeight * 15.00);
-            }
-        }
-        // 2. Fallback check (Hardcoded if no settings)
-        else {
-            if (totalWeight <= 1) shippingFee = 65.00;
-            else if (totalWeight <= 2) shippingFee = 85.00;
-            else if (totalWeight <= 3) shippingFee = 105.00;
-            else if (totalWeight <= 4) shippingFee = 125.00;
-            else if (totalWeight <= 5) shippingFee = 145.00;
-            else if (totalWeight <= 10) shippingFee = 200.00;
-            else if (totalWeight <= 20) shippingFee = 350.00;
-            else if (totalWeight <= 35) shippingFee = 550.00;
-            else if (totalWeight <= 50) shippingFee = 800.00;
-            else if (totalWeight <= 75) shippingFee = 1200.00;
-            else if (totalWeight <= 100) shippingFee = 1600.00;
-            else {
-                // 100 kg+ calculation: Contact Sales
-                shippingFee = null;
-            }
+        if (matchingTier) {
+            shippingFee = Number(matchingTier.price);
+        } else {
+            // Exceeds max weight logic
+            const lastTier = sortedList[sortedList.length - 1];
+            const extraWeight = Math.ceil(totalWeight - lastTier.maxWeight);
+            shippingFee = Number(lastTier.price) + (extraWeight * 15.00);
         }
     }
+    // 2. Fallback check (Hardcoded if no settings)
+    else {
+        if (totalWeight <= 1) shippingFee = 65.00;
+        else if (totalWeight <= 2) shippingFee = 85.00;
+        else if (totalWeight <= 3) shippingFee = 105.00;
+        else if (totalWeight <= 4) shippingFee = 125.00;
+        else if (totalWeight <= 5) shippingFee = 145.00;
+        else if (totalWeight <= 10) shippingFee = 200.00;
+        else if (totalWeight <= 20) shippingFee = 350.00;
+        else if (totalWeight <= 35) shippingFee = 550.00;
+        else if (totalWeight <= 50) shippingFee = 800.00;
+        else if (totalWeight <= 75) shippingFee = 1200.00;
+        else if (totalWeight <= 100) shippingFee = 1600.00;
+        else {
+            // 100 kg+ calculation: Contact Sales
+            shippingFee = null;
+        }
+    }
+}
 
-    return {
-        shippingFee,
-        isFreeShipping,
-        weightError: shippingFee === null // Flag to indicate weight limit exceeded
-    };
+return {
+    shippingFee,
+    isFreeShipping,
+    weightError: shippingFee === null // Flag to indicate weight limit exceeded
+};
 };
 
 /**

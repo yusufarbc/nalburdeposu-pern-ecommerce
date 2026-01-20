@@ -56,4 +56,30 @@ export class ProductController {
 
         res.json(product);
     });
+
+    /**
+     * Slug'a göre ürün detayını getirir.
+     * 
+     * @param {import('express').Request} req - Express istek nesnesi.
+     * @param {import('express').Response} res - Express yanıt nesnesi.
+     * @param {import('express').NextFunction} next - Express next fonksiyonu.
+     */
+    getProductBySlug = asyncHandler(async (req, res, next) => {
+        const { slug } = req.params;
+        const product = await this.productService.getProductBySlug(slug);
+
+        if (!product) {
+            return res.status(404).json({ error: 'Ürün bulunamadı' });
+        }
+
+        // Increment view count asynchronously (fire and forget)
+        // Note: View count is still ID based, so we use product.id
+        if (product.id) {
+            this.productService.incrementViewCount(product.id).catch(err =>
+                console.error('Failed to increment view count:', err)
+            );
+        }
+
+        res.json(product);
+    });
 }

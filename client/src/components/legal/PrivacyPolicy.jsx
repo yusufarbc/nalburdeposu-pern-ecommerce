@@ -1,66 +1,70 @@
+import { Shield, Lock, FileText, Server } from 'lucide-react';
 import React from 'react';
 
-export const PrivacyPolicy = () => {
+/**
+ * Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni
+ */
+export function PrivacyPolicy() {
     return (
-        <div className="space-y-8 text-gray-700">
-            {/* Bölüm 1: Gizlilik ve KVKK */}
-            <div>
-                <h2 className="text-2xl font-black text-corporate-black mb-6 border-b pb-2">BÖLÜM 1: GİZLİLİK POLİTİKASI VE KVKK AYDINLATMA METNİ</h2>
+        <div className="max-w-4xl mx-auto px-4 py-8">
+            <h1 className="text-3xl font-black mb-6 flex items-center gap-3">
+                <Shield className="text-brand-yellow" size={32} />
+                Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni
+            </h1>
 
-                <h3 className="text-xl font-bold text-corporate-black mt-6 mb-3">Veri Sorumlusu</h3>
-                <p className="mb-4">
-                    <strong>Unvan:</strong> AR-KAR GIDA TARIM ÜRÜNLERİ VE TAŞIMACILIK TİCARET LİMİTED ŞİRKETİ (Nalbur Deposu)<br />
-                    <strong>Adres:</strong> Samsun, Türkiye<br />
-                    <strong>E-posta:</strong> bilgi@nalburdeposu.com.tr
-                </p>
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 space-y-6 text-gray-700 leading-relaxed text-sm">
 
-                <h3 className="text-xl font-bold text-corporate-black mt-6 mb-3">1. Kişisel Verilerin İşlenme Amacı</h3>
-                <p className="mb-4">
-                    Tarafınıza ait ad, soyad, adres, <strong>telefon</strong> ve e-posta bilgileri; üyelik işlemlerinin gerçekleştirilmesi, siparişinizin alınması, ödemenin tahsil edilmesi (Param aracılığıyla), ürünün kargo firmasına teslim edilmesi, e-faturanızın gönderilmesi ve iletişim süreçlerinin yürütülmesi amacıyla işlenmektedir.
-                </p>
-
-                <h3 className="text-xl font-bold text-corporate-black mt-6 mb-3">2. Hukuki Sebepler</h3>
-                <p className="mb-4">
-                    Kişisel verileriniz, 6698 sayılı KVKK’nın 5. maddesinde belirtilen <strong>"Bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması"</strong> hukuki sebebine dayalı olarak işlenmektedir.
-                </p>
-
-                <h3 className="text-xl font-bold text-corporate-black mt-6 mb-3">3. Verilerin Aktarımı</h3>
-                <p className="mb-4">
-                    Kişisel verileriniz; ödemenin alınabilmesi için <strong>Param (Turk Elektronik Para A.Ş.)</strong> ile, siparişin teslimi için anlaşmalı <strong>Kargo Firmaları</strong> ile ve yasal yükümlülüklerimizin yerine getirilmesi amacıyla yetkili kamu kurum ve kuruluşları ile paylaşılmaktadır.
-                </p>
-                <p className="mb-4">
-                    Web sitemizin güvenliği ve performansı için <strong>Cloudflare</strong> altyapısı kullanılmaktadır. Bu kapsamda IP adresi ve log kayıtları gibi teknik veriler, hizmetin doğası gereği siber güvenlik ve erişilebilirlik amacıyla Cloudflare'in yurtdışındaki sunucuları üzerinden işlenebilmektedir.
-                </p>
-                <p className="mb-4">
-                    Haricinde üçüncü kişilerle paylaşılmaz, satılmaz veya devredilmez.
-                </p>
-
-                <h3 className="text-xl font-bold text-corporate-black mt-6 mb-3">4. Haklarınız</h3>
-                <p className="mb-4">
-                    Silinmesini, düzeltilmesini veya işlenip işlenmediğini öğrenmeyi talep etme hakkınız saklıdır.
-                </p>
-
-                <h3 className="text-xl font-bold text-corporate-black mt-6 mb-3">5. İletişim İzinleri ve Pazarlama</h3>
-                <div className="bg-green-50 border-l-4 border-green-500 p-4 my-4 rounded-r">
-                    <strong>🚫 Spam Yok Politikası:</strong>
-                    <p className="mt-2">
-                        Nalbur Deposu olarak kişisel verilerinizi <strong>asla reklam, pazarlama veya tanıtım amacıyla kullanmıyoruz.</strong>
-                        Size "kampanya başladı", "indirim var" gibi ticari elektronik iletiler (SMS/E-posta) <strong>göndermiyoruz.</strong>
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">1. Veri Sorumlusu</h2>
+                    <p>
+                        6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, kişisel verileriniz; veri sorumlusu olarak <strong>AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</strong> tarafından aşağıda belirtilen kapsamda işlenmektedir.
                     </p>
-                    <p className="mt-2">
-                        İletişim bilgileriniz sadece şu zorunlu hallerde kullanılır:
-                        <ul className="list-disc pl-5 mt-1">
-                            <li>Sipariş ve fatura bildirimleri</li>
-                            <li>Kargo takip bilgileri</li>
-                            <li>İade/Değişim süreçleri</li>
-                        </ul>
-                    </p>
-                </div>
+                    <div className="mt-2 bg-gray-50 p-4 rounded border border-gray-200 text-sm">
+                        <p><strong>Adres:</strong> Aşağı Kavacık Mah. Merkez Sk. No: 46 Çarşamba / SAMSUN</p>
+                        <p><strong>MERSİS No:</strong> 0071006548300015</p>
+                        <p><strong>Vergi Dairesi / No:</strong> Çarşamba V.D. / 0710065483</p>
+                    </div>
+                </section>
 
-                <p className="mb-4">
-                    Dijital pazarlama faaliyetlerimiz (Google Workspace ve Meta/Facebook/Instagram) yalnızca marka bilinirliği ve müşteri hizmetleri (WhatsApp hattı vb.) kapsamındadır. Kişisel verileriniz hedefli reklamcılık (re-marketing) amacıyla üçüncü taraflara satılmaz veya paylaşılmaz.
-                </p>
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">2. Kişisel Verilerin İşlenme Amacı</h2>
+                    <p>Şirketimiz, NACE kodu 475201 (Belirli bir mala tahsis edilmiş mağazalarda hırdavat, boya ve cam perakende ticareti) kapsamında faaliyet göstermektedir. Toplanan kişisel verileriniz;</p>
+                    <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li>Elektronik ticaret sitemiz üzerinden alınan siparişlerin ifası,</li>
+                        <li>Ürünlerin lojistik süreçlerinin yönetimi ve teslimatı,</li>
+                        <li>Fatura düzenlenmesi ve yasal muhasebe kayıtlarının tutulması,</li>
+                        <li>Tüketici mevzuatından kaynaklanan satış sonrası destek hizmetlerinin verilmesi</li>
+                    </ul>
+                    <p className="mt-2">amaçlarıyla, hukuka ve dürüstlük kurallarına uygun olarak işlenmektedir.</p>
+                    <div className="mt-3 p-3 bg-blue-50 text-blue-900 rounded border border-blue-100 text-xs">
+                        <strong>ÖNEMLİ NOT:</strong> Şirketimiz tarafından hiçbir surette reklam, pazarlama, kampanya bildirimi veya bülten gönderimi amacıyla veri işlenmemekte; kullanıcılara ticari elektronik ileti gönderilmemektedir.
+                    </div>
+                </section>
+
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">3. Çerezler Hakkında Bilgilendirme</h2>
+                    <p>Sitemizde yalnızca platformun teknik olarak çalışabilmesi ve sipariş süreçlerinin (sepet, ödeme adımları vb.) yönetilebilmesi için zorunlu olan <strong>oturum çerezleri</strong> ve teknik çerezler kullanılmaktadır.</p>
+                    <p className="mt-2">
+                        Kullanıcıların site içi davranışlarını izleyen, profilleme yapan veya hedefli reklam gösterimi sağlayan <u>üçüncü taraf çerezler kullanılmamaktadır.</u>
+                    </p>
+                </section>
+
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">4. İşlenen Kişisel Verilerin Aktarılması</h2>
+                    <p>Kişisel verileriniz, yukarıda belirtilen amaçların gerçekleştirilmesi doğrultusunda;</p>
+                    <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li>Ürünün teslimi için anlaşmalı kargo şirketlerine,</li>
+                        <li>Ödemenin tahsili için ilgili banka ve ödeme kuruluşlarına (Iyzico/Param),</li>
+                        <li>Yasal yükümlülüklerimizin yerine getirilmesi için Gelir İdaresi Başkanlığı ve diğer yetkili kamu kurumlarına aktarılmaktadır.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 className="text-lg font-bold text-corporate-black uppercase mb-2">5. Veri Sahibinin Hakları</h2>
+                    <p>KVKK’nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, verilerin düzeltilmesini veya silinmesini isteme haklarına sahiptir. Bu haklarınızı kullanmak için yukarıdaki adresimize yazılı olarak başvurabilirsiniz.</p>
+                </section>
+
             </div>
         </div>
     );
-};
+}

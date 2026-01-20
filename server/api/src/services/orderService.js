@@ -72,55 +72,55 @@ export class OrderService {
         let shippingFee = 0;
 
         // Ücretsiz Kargo Kontrolu
-        if (subTotal >= ucretsizKargoAltLimit) {
-            shippingFee = 0;
-        } else {
-            // Dinamik Fiyat Listesi Kontrolü
-            const priceList = settings && settings.kargoFiyatListesi ? settings.kargoFiyatListesi : null;
+        // Ücretsiz Kargo Mantığı İptal Edildi - Her Sipariş Ücretli
+        // if (subTotal >= ucretsizKargoAltLimit) { ... } logic removed
 
-            if (Array.isArray(priceList) && priceList.length > 0) {
-                // Listeyi ağırlığa göre sırala (küçükten büyüğe)
-                // JSON format: [{ "maxWeight": 1, "price": 50 }, { "maxWeight": 2, "price": 100 }]
-                const sortedList = [...priceList].sort((a, b) => a.maxWeight - b.maxWeight);
+        // Dinamik Fiyat Listesi Kontrolü
+        const priceList = settings && settings.kargoFiyatListesi ? settings.kargoFiyatListesi : null;
 
-                // Uygun aralığı bul
-                const matchingTier = sortedList.find(tier => totalWeight <= tier.maxWeight);
+        if (Array.isArray(priceList) && priceList.length > 0) {
+            // Listeyi ağırlığa göre sırala (küçükten büyüğe)
+            // JSON format: [{ "maxWeight": 1, "price": 50 }, { "maxWeight": 2, "price": 100 }]
+            const sortedList = [...priceList].sort((a, b) => a.maxWeight - b.maxWeight);
 
-                if (matchingTier) {
-                    shippingFee = Number(matchingTier.price);
-                } else {
-                    // Maksimum ağırlığı aşıyorsa (100+ kg ise veya son tier'in üstü)
-                    const lastTier = sortedList[sortedList.length - 1];
-                    // Eğer son tier 100'den küçükse ve toplam ağırlık 100'den büyükse, veya liste 100'e kadar tanımlıysa
-                    // Basitlik için: > 100 kg ise her durumda iletişime geç.
-                    if (totalWeight > 100) {
-                        shippingFee = null; // Kargo hesaplanamaz
-                    } else {
-                        // 100 kg altı ama listedeki max değerden büyük (örn liste 50'ye kadar)
-                        // Çarpan/Ekstra ücret mantığı kaldırıldı. Liste dışı ağırlık = İletişime geçiniz.
-                        shippingFee = null;
-                    }
-                }
+            // Uygun aralığı bul
+            const matchingTier = sortedList.find(tier => totalWeight <= tier.maxWeight);
+
+            if (matchingTier) {
+                shippingFee = Number(matchingTier.price);
             } else {
-                // Fallback: Kod içi varsayılan tablo (Admin panelinden ayar yapılmamışsa)
-                // Aralıklar: 0-1, 1-2, 2-3, 3-4, 4-5, 5-10, 10-20, 20-35, 35-50, 50-75, 75-100
-                if (totalWeight <= 1) shippingFee = 65.00;
-                else if (totalWeight <= 2) shippingFee = 85.00;
-                else if (totalWeight <= 3) shippingFee = 105.00;
-                else if (totalWeight <= 4) shippingFee = 125.00;
-                else if (totalWeight <= 5) shippingFee = 145.00;
-                else if (totalWeight <= 10) shippingFee = 200.00;
-                else if (totalWeight <= 20) shippingFee = 350.00;
-                else if (totalWeight <= 35) shippingFee = 550.00;
-                else if (totalWeight <= 50) shippingFee = 800.00;
-                else if (totalWeight <= 75) shippingFee = 1200.00;
-                else if (totalWeight <= 100) shippingFee = 1600.00;
-                else {
-                    // 100 kg üzeri: Otomatik hesaplama yok, iletişime geçilmeli
+                // Maksimum ağırlığı aşıyorsa (100+ kg ise veya son tier'in üstü)
+                const lastTier = sortedList[sortedList.length - 1];
+                // Eğer son tier 100'den küçükse ve toplam ağırlık 100'den büyükse, veya liste 100'e kadar tanımlıysa
+                // Basitlik için: > 100 kg ise her durumda iletişime geç.
+                if (totalWeight > 100) {
+                    shippingFee = null; // Kargo hesaplanamaz
+                } else {
+                    // 100 kg altı ama listedeki max değerden büyük (örn liste 50'ye kadar)
+                    // Çarpan/Ekstra ücret mantığı kaldırıldı. Liste dışı ağırlık = İletişime geçiniz.
                     shippingFee = null;
                 }
             }
+        } else {
+            // Fallback: Kod içi varsayılan tablo (Admin panelinden ayar yapılmamışsa)
+            // Aralıklar: 0-1, 1-2, 2-3, 3-4, 4-5, 5-10, 10-20, 20-35, 35-50, 50-75, 75-100
+            if (totalWeight <= 1) shippingFee = 65.00;
+            else if (totalWeight <= 2) shippingFee = 85.00;
+            else if (totalWeight <= 3) shippingFee = 105.00;
+            else if (totalWeight <= 4) shippingFee = 125.00;
+            else if (totalWeight <= 5) shippingFee = 145.00;
+            else if (totalWeight <= 10) shippingFee = 200.00;
+            else if (totalWeight <= 20) shippingFee = 350.00;
+            else if (totalWeight <= 35) shippingFee = 550.00;
+            else if (totalWeight <= 50) shippingFee = 800.00;
+            else if (totalWeight <= 75) shippingFee = 1200.00;
+            else if (totalWeight <= 100) shippingFee = 1600.00;
+            else {
+                // 100 kg üzeri: Otomatik hesaplama yok, iletişime geçilmeli
+                shippingFee = null;
+            }
         }
+
 
         // Küsürat hatalarını önle
         shippingFee = Number(shippingFee.toFixed(2));

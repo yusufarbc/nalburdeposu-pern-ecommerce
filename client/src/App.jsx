@@ -20,6 +20,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SettingsProvider } from './context/SettingsContext';
 
 import { Shop } from './pages/Shop';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                                             <Route path="/" element={<HomePage />} />
                                             <Route path="/magaza" element={<Shop />} />
                                             <Route path="/product/:id" element={<ProductDetailPage />} />
+                                            <Route path="/urun/:slug" element={<ProductDetailPage />} />
                                             <Route path="/checkout" element={<CheckoutPage />} />
                                             <Route path="/siparis-takip" element={<OrderTrackingPage />} />
                                             <Route path="/odeme" element={<CheckoutPage />} />
@@ -57,6 +59,7 @@ function App() {
                                         </Routes>
                                     </main>
                                     <Footer />
+                                    <WhatsAppButton />
                                     <CartSidebar />
                                 </div>
                             </CartProvider>

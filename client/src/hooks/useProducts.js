@@ -58,7 +58,16 @@ export const useProduct = (productId) => {
         setLoading(true);
         setError(null);
         try {
-            const data = await fetchProductById(productId);
+            // Determine if input is UUID (ID) or Slug
+            const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(productId);
+
+            let data;
+            if (isUuid) {
+                data = await fetchProductById(productId);
+            } else {
+                data = await fetchProductBySlug(productId);
+            }
+
             setProduct(data);
         } catch (err) {
             setError(err.message);

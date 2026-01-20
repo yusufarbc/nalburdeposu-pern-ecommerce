@@ -85,6 +85,16 @@ export class ProductService {
     }
 
     /**
+     * Retrieves a single product by its Slug.
+     * @param {string} slug - Product Slug.
+     * @returns {Promise<Object|null>} Product object or null if not found.
+     */
+    async getProductBySlug(slug) {
+        const product = await this.productRepository.findBySlug(slug);
+        return this._formatProduct(product);
+    }
+
+    /**
      * Increments the view count for a product.
      * @param {string} id - Product UUID.
      * @returns {Promise<void>}

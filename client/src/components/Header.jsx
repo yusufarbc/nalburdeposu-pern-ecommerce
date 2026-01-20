@@ -48,10 +48,7 @@ export function Header() {
                 <div className="bg-white border-b border-gray-100 hidden md:block">
                     <div className="container mx-auto px-4 h-10 flex items-center justify-between text-[11px] font-bold text-gray-500 uppercase tracking-tighter">
                         <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1.5 text-action-red italic">
-                                <Truck size={14} />
-                                {loading ? '...' : `${Number(settings.ucretsizKargoAltLimit).toLocaleString('tr-TR')} TL Üzeri Ücretsiz Kargo`}
-                            </div>
+                            {/* Free Shipping Banner Removed */}
                         </div>
                         <div className="flex items-center gap-4">
                             <Link to="/sss" className="hover:text-action-red transition-colors">Sıkça Sorulan Sorular</Link>
@@ -107,9 +104,9 @@ export function Header() {
                             >
                                 <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                 <ShoppingCart size={20} className="relative z-10 flex-shrink-0" />
-                                <div className="text-left leading-tight relative z-10 whitespace-nowrap">
-                                    <div className="text-[8px] md:text-[10px] font-bold opacity-70">Sepetim</div>
-                                    <div className="text-[10px] md:text-sm font-black">{cartCount} Ürün</div>
+                                <div className="text-left leading-none relative z-10 flex flex-col justify-center">
+                                    <span className="text-[9px] md:text-[10px] font-bold opacity-80 mb-0.5 hidden md:block">Sepetim</span>
+                                    <span className="text-xs md:text-sm font-black whitespace-nowrap">{cartCount} Ürün</span>
                                 </div>
                             </button>
                         </div>

@@ -9,4 +9,7 @@ router.get('/', productController.getProducts);
 // Ürün Detay
 router.get('/:id', productController.getProduct);
 
+// Ürün Detay (Slug ile)
+router.get('/slug/:slug', productController.getProductBySlug);
+
 export default router;
