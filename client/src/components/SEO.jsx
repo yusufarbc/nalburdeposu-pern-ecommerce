@@ -13,7 +13,7 @@ import { Helmet } from 'react-helmet-async';
  * @param {string} props.ogImage - Open Graph image URL
  * @param {string} props.canonical - Canonical URL
  * @param {Object} props.structuredData - JSON-LD structured data object
- * @param {boolean} props.noindex - Whether to prevent indexing
+ * @param {boolean} props.noindex - Whether to prevent indexing (defaults to false -> index, follow)
  */
 export const SEO = ({
     title,
@@ -48,7 +48,7 @@ export const SEO = ({
             {canonical && <link rel="canonical" href={canonical} />}
 
             {/* Robots */}
-            {noindex && <meta name="robots" content="noindex, nofollow" />}
+            <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
             {/* Open Graph Tags */}
             <meta property="og:type" content={ogType} />
