@@ -89,17 +89,12 @@ export class OrderService {
             if (matchingTier) {
                 shippingFee = Number(matchingTier.price);
             } else {
-                // Maksimum ağırlığı aşıyorsa (100+ kg ise veya son tier'in üstü)
+                // If weight exceeds the max defined tier, calculate based on the last tier + extra cost
                 const lastTier = sortedList[sortedList.length - 1];
-                // Eğer son tier 100'den küçükse ve toplam ağırlık 100'den büyükse, veya liste 100'e kadar tanımlıysa
-                // Basitlik için: > 100 kg ise her durumda iletişime geç.
-                if (totalWeight > 100) {
-                    shippingFee = null; // Kargo hesaplanamaz
-                } else {
-                    // 100 kg altı ama listedeki max değerden büyük (örn liste 50'ye kadar)
-                    // Çarpan/Ekstra ücret mantığı kaldırıldı. Liste dışı ağırlık = İletişime geçiniz.
-                    shippingFee = null;
-                }
+                const extraWeight = Math.ceil(totalWeight - lastTier.maxWeight);
+
+                // Add 15 TL for every extra kg (Matching Frontend Logic)
+                shippingFee = Number(lastTier.price) + (extraWeight * 15.00);
             }
         } else {
             // Fallback: Kod içi varsayılan tablo (Admin panelinden ayar yapılmamışsa)

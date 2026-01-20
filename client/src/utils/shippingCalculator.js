@@ -103,10 +103,8 @@ export const getShippingMessage = (shippingInfo, cartTotal, freeShippingThreshol
     }
 
     if (!shippingInfo.isFreeShipping) {
-        const remainingForFree = freeShippingThreshold - cartTotal;
-        if (remainingForFree > 0 && remainingForFree < 2000) {
-            return `📦 ${remainingForFree.toFixed(2)} TL daha alışveriş yapın, ücretsiz kargo kazanın!`;
-        }
+        // Free shipping is disabled, so we don't show "Add X TL more" message anymore.
+        return null;
     }
 
     return null;

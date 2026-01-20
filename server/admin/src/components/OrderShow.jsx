@@ -119,7 +119,9 @@ const OrderShow = (props) => {
                                                 <Text variant="caption" color="grey60">ID: {item.urunId}</Text>
                                             </TableCell>
                                             <TableCell>{formatCurrency(item.urunFiyatSnapshot)}</TableCell>
-                                            <TableCell><Badge>{item.adet}</Badge></TableCell>
+                                            <TableCell>
+                                                <Text fontWeight="bold" fontSize="lg" color="grey100">{item.adet}</Text>
+                                            </TableCell>
                                             <TableCell>{formatCurrency(item.toplamFiyat)}</TableCell>
                                         </TableRow>
                                     ))}
@@ -134,7 +136,7 @@ const OrderShow = (props) => {
                         <Box mt="xl" pt="lg" borderTop="1px solid" borderColor="grey20">
                             {/* Desi ve Kargo Bilgisi */}
                             <Box display="flex" justifyContent="space-between" mb="sm">
-                                <Text color="grey60">Toplam Desi:</Text>
+                                <Text color="grey60">Toplam Ağırlık (kg):</Text>
                                 <Text>{params.ui_totalDesi ? Number(params.ui_totalDesi).toFixed(2) : '0.00'}</Text>
                             </Box>
 

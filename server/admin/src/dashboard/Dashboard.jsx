@@ -47,7 +47,7 @@ const Dashboard = () => {
                 <Text variant="sm" color="grey60">NalburDeposu İşletme Özeti</Text>
             </Box>
 
-            {/* KPI Kartları */}
+            {/* KPI Kartları - Tek Satır */}
             <Box
                 display="grid"
                 style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}
@@ -55,7 +55,7 @@ const Dashboard = () => {
             >
                 {/* Bugün Ciro */}
                 <Box bg="white" p="24px" style={{ borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', borderBottom: '4px solid #DFFF00' }}>
-                    <Text variant="sm" color="grey100">BUGÜNÜN CIROSU</Text>
+                    <Text variant="sm" color="grey100">BUGÜNÜN CİROSU</Text>
                     <H4>{formatCurrency(data?.sales?.todayTurnover)}</H4>
                 </Box>
 
@@ -65,37 +65,20 @@ const Dashboard = () => {
                     <H4>{data?.kpi?.activeOrders || 0}</H4>
                 </Box>
 
-                {/* Toplam Stok */}
-                <Box bg="white" p="24px" style={{ borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', borderBottom: '4px solid #1A1A1A' }}>
-                    <Text variant="sm" color="grey100">TOPLAM STOK</Text>
-                    <H4>{data?.stock?.totalCount || 0}</H4>
-                </Box>
-
-                {/* Toplam Müşteri */}
+                {/* Toplam Müşteri - Stok Yerine Buraya Alındı */}
                 <Box bg="white" p="24px" style={{ borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', borderBottom: '4px solid #8E8E8E' }}>
                     <Text variant="sm" color="grey100">TOPLAM MÜŞTERİ</Text>
                     <H4>{data?.kpi?.totalCustomers || 0}</H4>
                 </Box>
-            </Box>
 
-            {/* Aksiyon Kartları */}
-            <Box
-                display="grid"
-                style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}
-                mb="40px"
-            >
-                {/* Fatura Bekleyen */}
-                <Box bg="white" p="24px" style={{ borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', borderBottom: '4px solid #FFA500' }}>
-                    <Text variant="sm" color="grey100">FATURA KESİLECEK</Text>
-                    <H4>{data?.kpi?.pendingInvoices || 0}</H4>
-                </Box>
-
-                {/* Kargo Bekleyen */}
+                {/* Kargo Bekleyen - Alt Satırdan Yukarı Alındı */}
                 <Box bg="white" p="24px" style={{ borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', borderBottom: '4px solid #0000FF' }}>
                     <Text variant="sm" color="grey100">KARGO BEKLEYEN</Text>
                     <H4>{data?.kpi?.pendingCargo || 0}</H4>
                 </Box>
             </Box>
+
+            {/* Aksiyon Kartları Bölümü Kaldırıldı, Kargo Yukarı Taşındı */}
 
             {/* Son Siparişler */}
             <Box bg="white" p="24px" style={{ borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>

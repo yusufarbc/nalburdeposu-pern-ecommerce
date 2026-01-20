@@ -576,8 +576,9 @@ export const CreateSiparisResource = (prisma) => ({
 
                         let totalDesi = 0;
                         items.forEach(item => {
-                            const itemDesi = item.urun ? Number(item.urun.desi) : 1;
-                            totalDesi += itemDesi * item.adet;
+                            // Use 'agirlik' (weight) as primary metric, fallback to 'desi', default to 0
+                            const itemWeight = item.urun ? Number(item.urun.agirlik || item.urun.desi || 0) : 0;
+                            totalDesi += itemWeight * item.adet;
                         });
 
                         const settings = await prisma.sistemAyarlari.findUnique({ where: { id: 'global-settings' } });
