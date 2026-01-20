@@ -23,22 +23,29 @@ const WhatsAppIcon = () => (
 
 // Payment method icons
 const VisaIcon = () => (
-    <svg viewBox="0 0 48 48" fill="currentColor" className="h-8">
+    <svg viewBox="0 0 48 48" fill="currentColor" className="h-6">
         <path fill="#1565C0" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z" />
         <path fill="#FFF" d="M15.186 19l-2.626 7.832c0 0-.667-3.313-.733-3.729-1.495-3.411-3.701-3.221-3.701-3.221L10.726 30v-.002h3.161L18.258 19H15.186zM17.689 30h3.021l1.973-11h-3.043L17.689 30zM38.008 19h-3.021l-4.71 11h2.852l.588-1.571h3.596L37.619 30h2.613L38.008 19zM34.513 26.328l1.563-4.157.818 4.157H34.513zM26.369 22.206c0-.606.498-1.057 1.926-1.057.928 0 1.991.463 1.991.463l.463-2.542c0 0-1.463-.463-2.853-.463-3.159 0-4.389 1.39-4.389 3.233 0 3.541 4.389 2.935 4.389 4.389 0 .606-.729 1.057-1.852 1.057-1.463 0-2.621-.695-2.621-.695l-.463 2.542c0 0 1.158.695 3.084.695 1.926 0 4.852-1.158 4.852-3.696C30.896 22.9 26.369 23.506 26.369 22.206z" />
     </svg>
 );
 
 const MastercardIcon = () => (
-    <svg viewBox="0 0 48 48" className="h-8">
+    <svg viewBox="0 0 48 48" className="h-6">
         <path fill="#ff9800" d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z" />
         <path fill="#d50000" d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z" />
         <path fill="#ff3d00" d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z" />
     </svg>
 );
 
+const ParamIcon = () => (
+    <svg viewBox="0 0 100 40" className="h-6" fill="currentColor">
+        <rect width="100" height="40" rx="4" fill="#1a365d" />
+        <text x="50" y="26" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">PARAM</text>
+    </svg>
+);
+
 const TroyIcon = () => (
-    <svg viewBox="0 0 239.83 132.38" className="h-5" style={{ minWidth: 'auto' }}>
+    <svg viewBox="0 0 239.83 132.38" className="h-6">
         <path fill="#ffffff" d="m239.31,119.91c0,6.6-5.35,11.94-11.94,11.94H12.48c-6.6,0-11.95-5.34-11.95-11.94V12.47C.53,5.88,5.88.53,12.48.53h214.9c6.59,0,11.94,5.35,11.94,11.94v107.44Z" />
         <path fill="#4c565c" d="m208.53,39.77c-2.89,0-6.09,1.6-7.35,4.51l-13.52,30.98-4.87-30.98c-.57-2.91-2.53-4.51-5.65-4.51h-17.13l14.65,51.46c.26.99.32,2.08.12,3.23-.77,4.29-4.87,7.78-9.17,7.78h-9.59c-2.43,0-4.03,1.5-4.83,4.92l-2.13,12.75h16.89c8.82,0,19.16-4.43,26.07-16.66l33.82-63.48h-17.31Z" />
         <path fill="#4c565c" d="m42.28,24.4c5.06,0,7.5,2.02,6.61,7.09l-1.47,8.26h11.62l-2.56,14.51h-11.62l-3.17,17.98c-1.1,6.25,5.1,7.08,8.66,7.08.7,0,1.29-.02,1.72-.04l-2.85,16.18c-.87.1-1.79.21-3.69.21-8.82,0-25.51-2.36-22.23-20.97l3.58-20.44h-8.46l2.55-14.51h8.39l2.7-15.35h10.21Z" />
@@ -62,7 +69,7 @@ export function Footer() {
                             <img
                                 src="/images/logo-dark.svg"
                                 alt="Nalbur Deposu"
-                                className="h-12 w-auto object-contain brightness-200 contrast-100"
+                                className="h-16 w-auto object-contain"
                             />
                         </Link>
                         <p className="text-sm leading-relaxed text-gray-500">
@@ -175,12 +182,11 @@ export function Footer() {
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-3 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                        <div className="h-6 w-auto flex gap-2">
-                            <VisaIcon />
-                            <MastercardIcon />
-                            <TroyIcon />
-                        </div>
+                    <div className="flex items-center gap-3">
+                        <VisaIcon />
+                        <MastercardIcon />
+                        <ParamIcon />
+                        <TroyIcon />
                     </div>
                 </div>
             </div>
