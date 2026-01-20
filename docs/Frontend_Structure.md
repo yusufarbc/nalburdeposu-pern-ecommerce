@@ -13,7 +13,13 @@ client/src/
 │   ├── CartSidebar.jsx # Slide-out sepet görünümü
 │   ├── CategoryFilter.jsx # Kategori filtresi
 │   ├── ErrorBoundary.jsx # Hata yakalama
-│   └── SEO.jsx         # Meta tag yönetimi
+│   ├── ErrorBoundary.jsx # Hata yakalama
+│   ├── SEO.jsx         # Meta tag yönetimi
+│   └── legal/          # Legal metin bileşenleri
+│       ├── RefundPolicy.jsx
+│       ├── ShippingInfo.jsx
+│       ├── PrivacyPolicy.jsx
+│       └── ...
 │
 ├── pages/              # Sayfa bileşenleri
 │   ├── Home.jsx        # Ana sayfa (ürün listesi + arama + filtre)
@@ -21,7 +27,9 @@ client/src/
 │   ├── CheckoutPage.jsx # Misafir checkout formu
 │   ├── OrderTrackingPage.jsx # Sipariş takip sayfası
 │   ├── PaymentSuccess.jsx # Ödeme başarılı
-│   └── PaymentFailure.jsx # Ödeme başarısız
+│   ├── PaymentSuccessPage.jsx # Ödeme başarılı
+│   ├── PaymentFailurePage.jsx # Ödeme başarısız
+│   └── LegalPage.jsx      # Yasal sayfalar (İade, Kargo vb.)
 │
 ├── context/            # React Context API
 │   └── CartContext.jsx # Sepet state yönetimi

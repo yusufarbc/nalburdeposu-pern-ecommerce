@@ -61,25 +61,16 @@ export class ProductService {
      * @returns {Promise<Array<Object>>} Array of formatted products.
      */
     async getAllProducts(filters = {}) {
-        console.log('DEBUG: getAllProducts called with filters:', JSON.stringify(filters));
-
         // If slug provided instead of ID, look up the category ID
         if (filters.kategoriSlug && !filters.kategoriId && this.categoryRepository) {
-            console.log('DEBUG: Looking up category by slug:', filters.kategoriSlug);
             const category = await this.categoryRepository.findBySlug(filters.kategoriSlug);
 
             if (category) {
-                console.log('DEBUG: Found category:', category.id, category.ad);
                 filters.kategoriId = category.id;
-            } else {
-                console.log('DEBUG: Category not found for slug:', filters.kategoriSlug);
             }
-        } else {
-            console.log('DEBUG: Skipping slug lookup. filters.kategoriId:', filters.kategoriId, 'this.categoryRepository exists:', !!this.categoryRepository);
         }
 
         const products = await this.productRepository.findAllWithCategories(filters);
-        console.log('DEBUG: Products found:', products.length);
         return products.map(p => this._formatProduct(p));
     }
 

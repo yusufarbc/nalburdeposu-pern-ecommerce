@@ -11,10 +11,26 @@ Nalbur Deposu (nalburdeposu.com.tr), Samsun merkezli, Türkiye geneline hizmet v
 
 ## Teknik Özellikler
 - **Altyapı**: PERN Stack (PostgreSQL, Express, React, Node.js)
-- **Frontend**: React + Vite, PWA destekli, mobil uyumlu, Cloudflare Pages'de deploy
-- **Backend**: REST API, MSC Architecture, Prisma ORM, Docker Compose ile VDS'de deploy
-- **Ödeme**: Param Payment Gateway ile güvenli ödeme işleme (3D Secure destekli)
-- **Güvenlik**: Cloudflare WAF, HTTPS, yurtdışı trafiğine kapalı
+- **Frontend**: 
+  - Framework: React 18 + Vite
+  - Styling: Tailwind CSS 3.x
+  - State/Hooks: Custom hooks in `src/hooks`, Context API
+  - Routing: React Router DOM 6.x
+  - SEO: React Helmet Async
+  - PWA: Vite Plugin PWA
+  - Icons: Lucide React
+- **Backend (API)**: 
+  - Framework: Express 4.x
+  - Database: PostgreSQL 15 via Prisma ORM 5.x
+  - Validasyon: Zod
+  - Architecture: Layered (Controller -> Service -> Repository)
+  - DI: Manual Dependency Injection via `container.js`
+- **Deployment**:
+  - Frontend: Cloudflare Pages
+  - Backend: Docker Compose on VDS (Caddy -> App)
+  - Storage: Cloudflare R2 (Object Storage)
+- **Ödeme**: Param Payment Gateway Integration
+- **Güvenlik**: Cloudflare WAF, Rate Limiting, Helmet.js
 
 ## İletişim & Destek
 - E-posta: bilgi@nalburdeposu.com.tr

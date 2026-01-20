@@ -53,7 +53,7 @@ function App() {
                                             <Route path="/on-bilgilendirme" element={<LegalPage title="Ön Bilgilendirme Formu" contentKey="on-bilgilendirme" />} />
                                             <Route path="/gizlilik-ve-kvkk" element={<LegalPage title="Gizlilik Politikası ve KVKK Aydınlatma Metni" contentKey="gizlilik-ve-kvkk" />} />
 
-                                            <Route path="/banka-hesaplari" element={<LegalPage title="Banka Hesap Bilgilerimiz" contentKey="banka-hesaplari" />} />
+
                                         </Routes>
                                     </main>
                                     <Footer />
