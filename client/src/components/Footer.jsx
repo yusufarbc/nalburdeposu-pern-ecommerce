@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, ChevronRight, Phone, MapPin } from 'lucide-react';
+import { Truck, Phone, Mail, MapPin, Shield, CreditCard, Headphones, ChevronRight, MessageCircle } from 'lucide-react';
 
 // Social media SVG icons
 const InstagramIcon = () => (
@@ -23,29 +23,22 @@ const WhatsAppIcon = () => (
 
 // Payment method icons
 const VisaIcon = () => (
-    <svg viewBox="0 0 48 48" fill="currentColor" className="h-6">
+    <svg viewBox="0 0 48 48" fill="currentColor" className="h-8">
         <path fill="#1565C0" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z" />
         <path fill="#FFF" d="M15.186 19l-2.626 7.832c0 0-.667-3.313-.733-3.729-1.495-3.411-3.701-3.221-3.701-3.221L10.726 30v-.002h3.161L18.258 19H15.186zM17.689 30h3.021l1.973-11h-3.043L17.689 30zM38.008 19h-3.021l-4.71 11h2.852l.588-1.571h3.596L37.619 30h2.613L38.008 19zM34.513 26.328l1.563-4.157.818 4.157H34.513zM26.369 22.206c0-.606.498-1.057 1.926-1.057.928 0 1.991.463 1.991.463l.463-2.542c0 0-1.463-.463-2.853-.463-3.159 0-4.389 1.39-4.389 3.233 0 3.541 4.389 2.935 4.389 4.389 0 .606-.729 1.057-1.852 1.057-1.463 0-2.621-.695-2.621-.695l-.463 2.542c0 0 1.158.695 3.084.695 1.926 0 4.852-1.158 4.852-3.696C30.896 22.9 26.369 23.506 26.369 22.206z" />
     </svg>
 );
 
 const MastercardIcon = () => (
-    <svg viewBox="0 0 48 48" className="h-6">
+    <svg viewBox="0 0 48 48" className="h-8">
         <path fill="#ff9800" d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z" />
         <path fill="#d50000" d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z" />
         <path fill="#ff3d00" d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z" />
     </svg>
 );
 
-const ParamIcon = () => (
-    <svg viewBox="0 0 100 40" className="h-6" fill="currentColor">
-        <rect width="100" height="40" rx="4" fill="#1a365d" />
-        <text x="50" y="26" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">PARAM</text>
-    </svg>
-);
-
 const TroyIcon = () => (
-    <svg viewBox="0 0 239.83 132.38" className="h-6">
+    <svg viewBox="0 0 239.83 132.38" className="h-5" style={{ minWidth: 'auto' }}>
         <path fill="#ffffff" d="m239.31,119.91c0,6.6-5.35,11.94-11.94,11.94H12.48c-6.6,0-11.95-5.34-11.95-11.94V12.47C.53,5.88,5.88.53,12.48.53h214.9c6.59,0,11.94,5.35,11.94,11.94v107.44Z" />
         <path fill="#4c565c" d="m208.53,39.77c-2.89,0-6.09,1.6-7.35,4.51l-13.52,30.98-4.87-30.98c-.57-2.91-2.53-4.51-5.65-4.51h-17.13l14.65,51.46c.26.99.32,2.08.12,3.23-.77,4.29-4.87,7.78-9.17,7.78h-9.59c-2.43,0-4.03,1.5-4.83,4.92l-2.13,12.75h16.89c8.82,0,19.16-4.43,26.07-16.66l33.82-63.48h-17.31Z" />
         <path fill="#4c565c" d="m42.28,24.4c5.06,0,7.5,2.02,6.61,7.09l-1.47,8.26h11.62l-2.56,14.51h-11.62l-3.17,17.98c-1.1,6.25,5.1,7.08,8.66,7.08.7,0,1.29-.02,1.72-.04l-2.85,16.18c-.87.1-1.79.21-3.69.21-8.82,0-25.51-2.36-22.23-20.97l3.58-20.44h-8.46l2.55-14.51h8.39l2.7-15.35h10.21Z" />
@@ -58,58 +51,66 @@ const TroyIcon = () => (
 
 export function Footer() {
     return (
-        <footer className="bg-[#111111] text-gray-400 pt-16 pb-8 font-sans">
+        <footer className="bg-corporate-black text-white pt-20 pb-10 border-t border-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Top Grid: Links & Brand */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 mb-12">
-
-                    {/* 1. Brand & Contact */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    {/* 1. Sütun: Nalbur Deposu (Kimlik) */}
                     <div className="space-y-6">
                         <Link to="/" className="inline-block group">
                             <img
                                 src="/images/logo-dark.svg"
                                 alt="Nalbur Deposu"
-                                className="h-16 w-auto object-contain"
+                                className="h-20 w-auto object-cover hover:opacity-90 transition-opacity duration-300"
+                                style={{ aspectRatio: '16/9' }}
                             />
                         </Link>
-                        <p className="text-sm leading-relaxed text-gray-500">
-                            Profesyonel hırdavat ve inşaat malzemeleri merkezi. Güvenilir alışverişin adresi.
+                        <p className="text-gray-400 leading-relaxed text-sm">
+                            Profesyonel hırdavat ve inşaat malzemeleri merkezi. Kaliteli ürünler, uygun fiyatlar ve güvenilir alışverişin adresi.
                         </p>
-
-                        <div className="space-y-3 pt-2">
-                            <a href="mailto:bilgi@nalburdeposu.com.tr" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-3 rounded-lg border border-white/5 hover:border-white/20 bg-white/5">
-                                <Mail size={18} />
-                                <span className="text-sm font-medium">bilgi@nalburdeposu.com.tr</span>
+                        <div className="space-y-4 pt-2">
+                            <a href="mailto:bilgi@nalburdeposu.com.tr" className="flex items-center gap-3 text-gray-300 hover:text-brand-yellow transition-colors bg-white/5 p-4 rounded-lg border border-white/10 hover:border-brand-yellow/30">
+                                <Mail size={22} />
+                                <span className="text-base font-medium">bilgi@nalburdeposu.com.tr</span>
                             </a>
-                            <div className="flex items-center gap-3 text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                                <Phone size={16} />
-                                <span>0542 182 68 55</span>
+                            <div className="flex gap-3">
+                                <a
+                                    href="https://instagram.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-600 hover:text-white transition-all hover:scale-110"
+                                    aria-label="Instagram"
+                                >
+                                    <InstagramIcon />
+                                </a>
+                                <a
+                                    href="https://facebook.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all hover:scale-110"
+                                    aria-label="Facebook"
+                                >
+                                    <FacebookIcon />
+                                </a>
+                                <a
+                                    href="https://wa.me/905421826855?text=Merhaba%2C%20nalburdeposu.com.tr%20%C3%BCzerinden%20size%20ula%C5%9F%C4%B1yorum."
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:bg-green-500 hover:text-white transition-all hover:scale-110"
+                                    aria-label="WhatsApp"
+                                >
+                                    <WhatsAppIcon />
+                                </a>
                             </div>
-                            <div className="flex items-start gap-3 text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                                <MapPin size={16} className="mt-1 flex-shrink-0" />
-                                <span>Çarşamba / Samsun</span>
-                            </div>
-                        </div>
-
-                        <div className="flex gap-4 pt-2">
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors transform hover:scale-110">
-                                <InstagramIcon />
-                            </a>
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors transform hover:scale-110">
-                                <FacebookIcon />
-                            </a>
-                            <a href="https://wa.me/905421826855" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors transform hover:scale-110">
-                                <WhatsAppIcon />
-                            </a>
                         </div>
                     </div>
 
-                    {/* 2. Alışveriş */}
+                    {/* 2. Sütun: Alışveriş */}
                     <div>
-                        <h3 className="text-white font-bold text-base mb-6 flex items-center gap-2">
+                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-brand-yellow rounded-full"></span>
                             Alışveriş
                         </h3>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-3">
                             {[
                                 { name: 'Öne Çıkanlar', href: '/magaza?ozellik=one-cikan' },
                                 { name: 'Fırsat Ürünleri', href: '/magaza?ozellik=firsat' },
@@ -117,53 +118,65 @@ export function Footer() {
                                 { name: 'Çok Satanlar', href: '/magaza?ozellik=cok-satan' }
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link to={item.href} className="text-sm hover:text-brand-yellow hover:translate-x-1 transition-all flex items-center gap-2">
-                                        <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-                                        {item.name}
+                                    <Link
+                                        to={item.href}
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-3 text-sm group"
+                                    >
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-brand-yellow transition-colors flex-shrink-0" />
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* 3. Müşteri Hizmetleri */}
+                    {/* 3. Sütun: Müşteri */}
                     <div>
-                        <h3 className="text-white font-bold text-base mb-6 flex items-center gap-2">
-                            Müşteri Hizmetleri
+                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-brand-yellow rounded-full"></span>
+                            Müşteri
                         </h3>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-3">
                             {[
                                 { name: 'Kargo ve Teslimat', href: '/kargo-bilgileri' },
-                                { name: 'İade ve Değişim', href: '/iade-degisim' },
+                                { name: 'İade ve Değişim Şartları', href: '/iade-degisim' },
                                 { name: 'Sıkça Sorulan Sorular', href: '/sss' },
                                 { name: 'İletişim', href: '/iletisim' }
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link to={item.href} className="text-sm hover:text-brand-yellow hover:translate-x-1 transition-all flex items-center gap-2">
-                                        <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-                                        {item.name}
+                                    <Link
+                                        to={item.href}
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 text-sm group"
+                                    >
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-brand-yellow transition-colors" />
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* 4. Kurumsal */}
+                    {/* 4. Sütun: Kurumsal */}
                     <div>
-                        <h3 className="text-white font-bold text-base mb-6 flex items-center gap-2">
+                        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-brand-yellow rounded-full"></span>
                             Kurumsal
                         </h3>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-3">
                             {[
+                                { name: 'Hakkımızda', href: '/hakkimizda' },
                                 { name: 'Hakkımızda', href: '/hakkimizda' },
                                 { name: 'Mesafeli Satış Sözleşmesi', href: '/mesafeli-satis-sozlesmesi' },
                                 { name: 'KVKK Aydınlatma Metni', href: '/gizlilik-ve-kvkk' },
                                 { name: 'Ön Bilgilendirme Formu', href: '/on-bilgilendirme' }
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link to={item.href} className="text-sm hover:text-brand-yellow hover:translate-x-1 transition-all flex items-center gap-2">
-                                        <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-                                        {item.name}
+                                    <Link
+                                        to={item.href}
+                                        className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center gap-2 text-sm group"
+                                    >
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-brand-yellow transition-colors" />
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -171,22 +184,35 @@ export function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom Bar: Copyright & Legal */}
-                <div className="pt-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div className="flex-1 text-center md:text-left">
-                        <p className="text-xs text-gray-600 leading-relaxed max-w-2xl">
-                            &copy; {new Date().getFullYear()} Nalbur Deposu. Tüm Hakları Saklıdır. <br className="hidden sm:block" />
-                            <span className="opacity-70 mt-1 inline-block">
-                                AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Tic. Ltd. Şti. | MERSİS: 0071006548300015
-                            </span>
-                        </p>
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-white/10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-8">
+                        <div className="text-gray-500 text-xs leading-relaxed space-y-1">
+                            <p><strong className="text-gray-400">Ticari Unvan:</strong> AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</p>
+                            <p><strong className="text-gray-400">Adres:</strong> Aşağı Kavacık Mah. Merkez Sk. No: 46 Çarşamba / Samsun</p>
+                            <p className="flex flex-wrap gap-x-4">
+                                <span><strong className="text-gray-400">MERSİS No:</strong> 0071006548300015</span>
+                                <span><strong className="text-gray-400">Vergi Dairesi / No:</strong> Çarşamba V.D. / 0710065483</span>
+                            </p>
+                        </div>
+                        <div className="flex justify-start md:justify-end">
+                            <div className="flex items-center gap-2 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg opacity-80 hover:opacity-100 transition-opacity">
+                                    <VisaIcon />
+                                    <MastercardIcon />
+                                    <TroyIcon />
+                                    <span className="text-white font-bold opacity-70 tracking-widest text-sm ml-1">Param</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                        <VisaIcon />
-                        <MastercardIcon />
-                        <ParamIcon />
-                        <TroyIcon />
+                    <div className="text-center md:text-left pt-4 border-t border-white/5 flex flex-col gap-2">
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+                            <p className="text-gray-600 text-xs">
+                                &copy; {new Date().getFullYear()} Nalbur Deposu. Bir <strong>AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</strong> kuruluşudur. | MERSİS: 0071006548300015 | Vergi No: 0710065483
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
