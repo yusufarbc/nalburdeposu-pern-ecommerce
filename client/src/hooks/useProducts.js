@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchProducts, fetchProductById } from '../services/apiService';
+import { fetchProducts, fetchProductById, fetchProductBySlug } from '../services/apiService';
 
 /**
  * Custom hook for fetching and managing products

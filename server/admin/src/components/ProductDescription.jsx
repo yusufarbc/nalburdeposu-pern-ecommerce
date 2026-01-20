@@ -84,9 +84,6 @@ const ProductDescription = (props) => {
 
             {/* Template Buttons */}
             <Box flex gap="sm" mb="sm" flexWrap="wrap">
-                <Button size="sm" variant="outlined" onClick={() => handleInsert('specs')} type="button">
-                    📊 Teknik Tablo Ekle
-                </Button>
                 <Button size="sm" variant="outlined" onClick={() => handleInsert('features')} type="button">
                     ✅ Özellik Listesi Ekle
                 </Button>
