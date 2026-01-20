@@ -24,11 +24,7 @@ export const ShippingInfo = () => {
                     </thead>
                     <tbody>
                         <tr className="bg-white">
-                            <td className="p-3 border border-gray-300">10.000 TL ve üzeri</td>
-                            <td className="p-3 border border-gray-300 font-bold text-green-600">ÜCRETSİZ</td>
-                        </tr>
-                        <tr className="bg-gray-50">
-                            <td className="p-3 border border-gray-300">10.000 TL altı</td>
+                            <td className="p-3 border border-gray-300">Tüm Siparişler</td>
                             <td className="p-3 border border-gray-300">Ağırlık bazlı (kg) hesaplanır</td>
                         </tr>
                     </tbody>

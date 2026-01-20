@@ -13,7 +13,7 @@ const faqs = [
             },
             {
                 q: "Kargo ücreti ne kadardır?",
-                a: "500 TL ve üzeri siparişlerde kargo ücretsizdir. 500 TL altı siparişlerde kargo ücreti ürünlerin toplam ağırlığına (desi) göre hesaplanır ve sepet sayfasında gösterilir."
+                a: "Kargo ücreti ürünlerin toplam ağırlığına (kg) göre hesaplanır ve sepet sayfasında gösterilir. Tüm siparişlerde kargo ücreti alıcıya aittir."
             },
             {
                 q: "Siparişimi nasıl takip edebilirim?",
@@ -85,7 +85,7 @@ const faqs = [
         questions: [
             {
                 q: "Alışveriş yapmak için üye olmam gerekli mi?",
-                a: "Sistemimizde üyelik sistemi bulunmamaktadır. Tüm alışverişlerinizi güvenli bir şekilde misafir kullanıcı olarak gerçekleştirebilirsiniz. Sipariş takibini sipariş numarası ve e-posta adresiniz ile yapabilirsiniz."
+                a: "Sistemimizde üyelik sistemi bulunmamaktadır. Tüm alışverişlerinizi güvenli bir şekilde misafir kullanıcı olarak gerçekleştirebilirsiniz. Sipariş takibini sipariş numarası ve e-posta adresine gelen sipariş takip linki ile takip yapabilirsiniz."
             },
             {
                 q: "Kişisel bilgilerim güvende mi?",
@@ -162,12 +162,7 @@ export function FAQPage() {
                         Size yardımcı olmaktan mutluluk duyarız. Müşteri hizmetlerimiz ile iletişime geçin.
                     </p>
                     <div className="flex flex-wrap gap-4">
-                        <a
-                            href="/iletisim"
-                            className="inline-flex items-center gap-2 bg-action-red text-white px-6 py-3 rounded-lg font-bold hover:bg-corporate-black hover:text-brand-yellow transition-all hover:scale-105"
-                        >
-                            İletişim Formu
-                        </a>
+                        {/* İletişim Formu butonu kaldırıldı */}
                         <a
                             href="https://wa.me/905421826855?text=Merhaba, bir sorum var"
                             target="_blank"

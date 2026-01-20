@@ -109,7 +109,6 @@ export function AboutPage() {
                             {[
                                 { title: 'Geniş Ürün Yelpazesi', desc: 'Hırdavattan inşaat malzemelerine her şey tek platformda.' },
                                 { title: 'Güvenli Alışveriş', desc: '256-bit SSL ve 3D Secure ile tam koruma.' },
-                                { title: 'Ücretsiz Kargo', desc: '10.000 TL üzeri alışverişlerde kargo bedava.' },
                                 { title: 'Kolay İade', desc: '14 gün içinde koşulsuz iade hakkı.' },
                                 { title: 'Toplu Sipariş', desc: 'Projeleriniz için özel fiyat avantajları.' },
                                 { title: 'Profesyonel Destek', desc: 'Alanında uzman ekibimizle teknik destek.' }
