@@ -11,12 +11,13 @@ import { formatPrice, calculateDiscountPercentage } from '../utils/formatters';
 import DOMPurify from 'dompurify';
 
 export function ProductDetailPage() {
-    const { id } = useParams();
+    const { id, slug } = useParams();
+    const productIdOrSlug = id || slug;
     const navigate = useNavigate();
     const { addToCart } = useCart();
 
     // Use custom hooks for data fetching
-    const { product, loading, error } = useProduct(id);
+    const { product, loading, error } = useProduct(productIdOrSlug);
     const { products: relatedProducts } = useProducts(
         product?.kategoriId ? { kategoriId: product.kategoriId } : null
     );
@@ -28,11 +29,11 @@ export function ProductDetailPage() {
     const [isAdding, setIsAdding] = useState(false);
     const [activeTab, setActiveTab] = useState('description');
 
-    // Reset state when product ID changes
+    // Reset state when product ID/Slug changes
     useEffect(() => {
         setSelectedImageIndex(0);
         setQuantity(1);
-    }, [id]);
+    }, [productIdOrSlug]);
 
     // Build image array (main + additional images)
     const getImages = () => {
@@ -140,7 +141,7 @@ export function ProductDetailPage() {
                 keywords={`${product.ad}, ${product.kategori?.ad || ''}, ${product.marka?.ad || ''}, hırdavat, inşaat malzemeleri`}
                 ogType="product"
                 ogImage={product.resimUrl}
-                canonical={`https://nalburdeposu.com.tr/product/${product.id}`}
+                canonical={`https://nalburdeposu.com.tr/urun/${product.slug || product.id}`}
                 structuredData={structuredData}
             />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

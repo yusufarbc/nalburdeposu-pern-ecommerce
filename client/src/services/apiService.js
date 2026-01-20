@@ -40,6 +40,21 @@ export const fetchProductById = async (id) => {
     }
 };
 
+/**
+ * Fetch a single product by Slug
+ * @param {string} slug - Product Slug
+ * @returns {Promise<Object>} Product details
+ */
+export const fetchProductBySlug = async (slug) => {
+    try {
+        const response = await api.get(`/api/v1/products/slug/${slug}`);
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch product with slug:', slug, error);
+        throw new Error('Ürün detayları yüklenemedi.');
+    }
+};
+
 // ============================================
 // Category Service
 // ============================================

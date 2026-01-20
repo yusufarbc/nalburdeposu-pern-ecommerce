@@ -165,7 +165,7 @@ export function Footer() {
                         <ul className="space-y-3">
                             {[
                                 { name: 'Hakkımızda', href: '/hakkimizda' },
-                                { name: 'Hakkımızda', href: '/hakkimizda' },
+
                                 { name: 'Mesafeli Satış Sözleşmesi', href: '/mesafeli-satis-sozlesmesi' },
                                 { name: 'KVKK Aydınlatma Metni', href: '/gizlilik-ve-kvkk' },
                                 { name: 'Ön Bilgilendirme Formu', href: '/on-bilgilendirme' }
@@ -186,32 +186,20 @@ export function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-8">
-                        <div className="text-gray-500 text-xs leading-relaxed space-y-1">
-                            <p><strong className="text-gray-400">Ticari Unvan:</strong> AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</p>
-                            <p><strong className="text-gray-400">Adres:</strong> Aşağı Kavacık Mah. Merkez Sk. No: 46 Çarşamba / Samsun</p>
-                            <p className="flex flex-wrap gap-x-4">
-                                <span><strong className="text-gray-400">MERSİS No:</strong> 0071006548300015</span>
-                                <span><strong className="text-gray-400">Vergi Dairesi / No:</strong> Çarşamba V.D. / 0710065483</span>
-                            </p>
-                        </div>
-                        <div className="flex justify-start md:justify-end">
-                            <div className="flex items-center gap-2 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
-                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg opacity-80 hover:opacity-100 transition-opacity">
-                                    <VisaIcon />
-                                    <MastercardIcon />
-                                    <TroyIcon />
-                                    <span className="text-white font-bold opacity-70 tracking-widest text-sm ml-1">Param</span>
-                                </div>
+                    <div className="flex justify-start md:justify-end mb-4">
+                        <div className="flex items-center gap-2 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg opacity-80 hover:opacity-100 transition-opacity">
+                                <VisaIcon />
+                                <MastercardIcon />
+                                <TroyIcon />
+                                <span className="text-white font-bold opacity-70 tracking-widest text-sm ml-1">Param</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="text-center md:text-left pt-4 border-t border-white/5 flex flex-col gap-2">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-2">
-                            <p className="text-gray-600 text-xs">
-                                &copy; {new Date().getFullYear()} Nalbur Deposu. Bir <strong>AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</strong> kuruluşudur. | MERSİS: 0071006548300015 | Vergi No: 0710065483
-                            </p>
+                        <div className="text-[11px] text-gray-600 leading-relaxed text-center md:text-left">
+                            &copy; {new Date().getFullYear()} Nalbur Deposu. Bir <strong>AR-KAR Gıda Tarım Ürünleri ve Taşımacılık Ticaret Limited Şirketi</strong> kuruluşudur. | <strong>MERSİS:</strong> 0071006548300015 | <strong>V.D:</strong> Çarşamba / 0710065483 | <strong>Adres:</strong> Aşağı Kavacık Mah. Merkez Sk. No: 46 Çarşamba / Samsun
                         </div>
                     </div>
                 </div>

@@ -97,7 +97,7 @@ export const generateProductSchema = (product) => {
         } : undefined,
         offers: {
             '@type': 'Offer',
-            url: `${SITE_URL}/product/${product.id}`,
+            url: `${SITE_URL}/${product.slug ? 'urun/' + product.slug : 'product/' + product.id}`,
             priceCurrency: 'TRY',
             price: price.toFixed(2),
             availability,
@@ -143,7 +143,7 @@ export const generateProductListSchema = (products, listName) => ({
         item: {
             '@type': 'Product',
             name: product.ad,
-            url: `${SITE_URL}/product/${product.id}`,
+            url: `${SITE_URL}/${product.slug ? 'urun/' + product.slug : 'product/' + product.id}`,
             image: product.resimUrl,
             offers: {
                 '@type': 'Offer',

@@ -49,7 +49,7 @@ export function ProductCard({ product }) {
 
     return (
         <div className="group bg-white shadow-sm rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 hover:shadow-xl hover:border-brand-yellow/50 transition-all duration-300 hover:-translate-y-1">
-            <Link to={`/product/${product.id}`} className="block relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+            <Link to={product.slug ? `/urun/${product.slug}` : `/product/${product.id}`} className="block relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                 {/* Image Wrap */}
                 <div className="w-full h-full bg-white flex items-center justify-center p-4 pb-2">
                     {product.resimUrl ? (
@@ -106,7 +106,7 @@ export function ProductCard({ product }) {
                     </span>
                 )}
 
-                <Link to={`/product/${product.id}`}>
+                <Link to={product.slug ? `/urun/${product.slug}` : `/product/${product.id}`}>
                     <h3 className="text-[#666666] font-bold text-xs mb-2 line-clamp-2 leading-relaxed hover:text-action-red transition-colors min-h-[32px]">
                         {product.ad}
                     </h3>
