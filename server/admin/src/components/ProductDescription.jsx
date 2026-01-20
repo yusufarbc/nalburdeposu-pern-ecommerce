@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Label, Button, Text } from '@adminjs/design-system';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+
+// Load Quill CSS dynamically to avoid Rollup bundling issues
+const QUILL_CSS_URL = 'https://cdn.jsdelivr.net/npm/react-quill@2.0.0/dist/quill.snow.css';
 
 /**
  * Custom Product Description Editor with WYSIWYG (ReactQuill)
@@ -11,6 +13,17 @@ const ProductDescription = (props) => {
     const { property, record, onChange } = props;
     const value = record.params[property.name] || '';
     const error = record.errors && record.errors[property.name];
+
+    // Load Quill CSS on mount
+    useEffect(() => {
+        const existingLink = document.querySelector(`link[href="${QUILL_CSS_URL}"]`);
+        if (!existingLink) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = QUILL_CSS_URL;
+            document.head.appendChild(link);
+        }
+    }, []);
 
     // Templates to insert
     const templates = {
