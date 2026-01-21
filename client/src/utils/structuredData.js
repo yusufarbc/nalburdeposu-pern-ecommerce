@@ -7,7 +7,7 @@ import DOMPurify from 'dompurify';
 
 const SITE_URL = 'https://nalburdeposu.com.tr';
 const SITE_NAME = 'Nalbur Deposu';
-const LOGO_URL = `${SITE_URL}/images/logo.png`;
+const LOGO_URL = `${SITE_URL}/images/logo-yellow.svg`;
 
 /**
  * Sanitize product descriptions for safe use in JSON-LD.

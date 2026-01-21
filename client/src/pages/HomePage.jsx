@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchBrands } from '../services/apiService';
 import SEO from '../components/SEO';
-import { generateWebsiteSchema, combineSchemas } from '../utils/structuredData';
+import { generateWebsiteSchema, combineSchemas, generateOrganizationSchema } from '../utils/structuredData';
 import { FeaturesSection } from '../components/FeaturesSection';
 
 // Sub Components
@@ -37,7 +37,7 @@ export function HomePage() {
     // SEO
     const seoTitle = 'Nalbur Deposu - İnşaat ve Hırdavat Malzemeleri';
     const seoDescription = 'Nalbur Deposu - İnşaat ve tadilat malzemeleri, hırdavat ürünleri, boya ve yapı kimyasalları en uygun fiyatlarla.';
-    const structuredData = combineSchemas(generateWebsiteSchema());
+    const structuredData = combineSchemas(generateWebsiteSchema(), generateOrganizationSchema());
 
     // We can fetch categories here to pass to CategoryGrid if needed, 
     // or let CategoryGrid use the hook itself if updated.
