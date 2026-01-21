@@ -78,10 +78,9 @@ export const generateWebsiteSchema = () => ({
  * Generate Product schema
  * @param {Object} product - Product object
  * @returns {Object} JSON-LD product schema
-    const sanitizedDescription = sanitizeDescription(product.aciklama);
-
  */
 export const generateProductSchema = (product) => {
+    const sanitizedDescription = sanitizeDescription(product.aciklama);
     const price = Number(product.indirimliFiyat || product.fiyat);
     const availability = product.stok > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
 
