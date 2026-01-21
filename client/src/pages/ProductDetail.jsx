@@ -35,7 +35,7 @@ export function ProductDetail() {
     const [isWishlisted, setIsWishlisted] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [isAdding, setIsAdding] = useState(false);
-    const [activeTab, setActiveTab] = useState('description');
+
 
     // Reset state when product ID changes
     useEffect(() => {
@@ -366,58 +366,14 @@ export function ProductDetail() {
                     </div>
                 </div>
 
-                {/* Tabs Section */}
+                {/* Product Description */}
                 <div className="mt-16">
-                    <div className="border-b border-gray-200">
-                        <div className="flex gap-8">
-                            <button
-                                onClick={() => setActiveTab('description')}
-                                className={`pb-4 font-bold transition-colors border-b-2 -mb-px ${activeTab === 'description'
-                                    ? 'text-corporate-black border-brand-yellow'
-                                    : 'text-gray-400 border-transparent hover:text-gray-600'
-                                    }`}
-                            >
-                                Açıklama
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('specs')}
-                                className={`pb-4 font-bold transition-colors border-b-2 -mb-px ${activeTab === 'specs'
-                                    ? 'text-corporate-black border-brand-yellow'
-                                    : 'text-gray-400 border-transparent hover:text-gray-600'
-                                    }`}
-                            >
-                                Teknik Özellikler
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="py-8">
-                        {activeTab === 'description' && (
-                            <div className="prose prose-lg max-w-none">
-                                {product.aciklama ? (
-                                    <div dangerouslySetInnerHTML={{ __html: product.aciklama }} />
-                                ) : (
-                                    <p className="text-gray-500">Bu ürün için açıklama bulunmuyor.</p>
-                                )}
-                            </div>
-                        )}
-                        {activeTab === 'specs' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                {/* Weight display hidden per user request */}
-                                {product.kategori && (
-                                    <div className="flex justify-between py-3 border-b border-gray-100">
-                                        <span className="text-gray-500">Kategori</span>
-                                        <span className="font-medium">{product.kategori.ad}</span>
-                                    </div>
-                                )}
-                                {product.marka && (
-                                    <div className="flex justify-between py-3 border-b border-gray-100">
-                                        <span className="text-gray-500">Marka</span>
-                                        <span className="font-medium">{product.marka.ad}</span>
-                                    </div>
-                                )}
-                            </div>
+                    <h2 className="text-2xl font-black text-corporate-black mb-8">Açıklama</h2>
+                    <div className="prose prose-lg max-w-none">
+                        {product.aciklama ? (
+                            <div dangerouslySetInnerHTML={{ __html: product.aciklama }} />
+                        ) : (
+                            <p className="text-gray-500">Bu ürün için açıklama bulunmuyor.</p>
                         )}
                     </div>
                 </div>
