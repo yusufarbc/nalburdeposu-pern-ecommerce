@@ -51,7 +51,7 @@ export function FeaturedProducts() {
                     </div>
 
                     <button
-                        onClick={() => navigate('/magaza?filter=featured')}
+                        onClick={() => navigate('/magaza')}
                         className="hidden md:flex items-center gap-2 text-corporate-black font-bold hover:text-brand-yellow transition-colors group"
                     >
                         Tümünü Gör
@@ -77,7 +77,7 @@ export function FeaturedProducts() {
                 {/* Mobile "See All" Button */}
                 <div className="mt-8 text-center md:hidden">
                     <button
-                        onClick={() => navigate('/magaza?filter=featured')}
+                        onClick={() => navigate('/magaza')}
                         className="inline-flex items-center gap-2 bg-brand-yellow text-corporate-black px-6 py-3 rounded-full font-bold hover:bg-yellow-300 transition-colors"
                     >
                         Tümünü Gör

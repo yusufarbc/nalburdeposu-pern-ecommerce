@@ -122,6 +122,14 @@ export function Header() {
                 <div className="hidden md:block bg-corporate-black py-0 border-t border-white/5">
                     <div className="container mx-auto px-4">
                         <div className="flex items-center justify-between gap-1 h-14 whitespace-nowrap text-[13px] font-black uppercase tracking-tight text-white/90">
+                            {/* "TÜM ÜRÜNLER" Button Added Here */}
+                            <button
+                                className="px-4 h-full cursor-pointer hover:bg-white/10 transition-all flex items-center gap-1.5"
+                                onClick={() => navigate('/magaza')}
+                            >
+                                <span>TÜM ÜRÜNLER</span>
+                            </button>
+
                             {categories.map((cat) => (
                                 <div
                                     key={cat.id}

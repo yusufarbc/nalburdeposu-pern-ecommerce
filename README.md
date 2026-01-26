@@ -128,7 +128,7 @@ npm run dev
 - **Helmet.js**: Güvenli HTTP headers
 - **Rate Limiting**: API endpoint koruması
 - **Prisma ORM**: SQL injection önleme
-- **Iyzico 3D Secure**: Güvenli ödeme işleme
+- **Param 3D Secure**: Güvenli ödeme işleme
 - **Cloudflare R2**: Güvenli dosya depolama
 - **Yurtdışı Koruması**: Cloudflare WAF ile Türkiye dışı erişim engeli
 
